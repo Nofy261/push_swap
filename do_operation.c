@@ -22,12 +22,28 @@ void	push_to_b(t_list **stack_a, t_list **stack_b)
 	write (1, "pb\n", 3);
 }
 
-void	swap_a(t_list **stack_a)
+int    swap_a(t_list **stack)
 {
-	//intervertit les 2 premiers elements au sommet de a
-	t_list *tmp;
+    // Utilisation de la fonction ft_swap
+    if (ft_swap_node(stack) == -1)
+        return (-1);
 
-	tmp = *stack_a;
-	*stack_a = (*stack_a)->next;
-	ft_swap(*tmp, *stack_a);//echange les deux nodes
+    // Afficher l'opération "sa" pour le checker de push_swap
+    write(1, "sa\n", 3);
+    return (0);
+}
+
+int    ft_swap_node(t_list **stack)
+{
+    t_list    *tmp_node;
+
+    if (ft_lstsize(*stack) < 2)
+        return (-1);
+    // Swapper les deux premiers éléments
+    tmp_node = (*stack)->next;
+    (*stack)->next = tmp_node->next;
+    tmp_node->next = *stack;
+    *stack = tmp_node;
+
+    return (0);
 }
