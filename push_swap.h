@@ -1,5 +1,5 @@
 #ifndef PUSH_SWAP_H
-# define	PUSH_SWAP_H
+# define PUSH_SWAP_H
 
 # include <unistd.h>
 
@@ -10,12 +10,16 @@ typedef struct s_list
 }					t_list;
 
 
+/*  Utils */
+void	ft_lstadd_front(t_list **lst, t_list *new);
 
+/* Push */
+void	push_to_a(t_list **stack_a, t_list **stack_b);
+void	push_to_b(t_list **stack_a, t_list **stack_b);
 
-
-
-
-
+/* Swap */
+int    ft_swap_node(t_list **stack);
+int    swap_a(t_list **stack);
 
 
 #endif

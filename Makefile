@@ -4,17 +4,15 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra
 
-FSRCS = 
+FSRCS =
 
 
 OFILES = $(FSRCS:.c=.o)
 
-ARRC=ar -rc
-
 all : $(NAME)
 
 $(NAME) : $(OFILES)
-		$(ARRC) $(NAME) $(OFILES)
+		 $(NAME) $(OFILES)
 
 clean :
 	rm -f $(OFILES)
