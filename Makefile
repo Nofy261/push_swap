@@ -4,7 +4,11 @@ CC = cc
 
 CFLAGS = -Wall -Werror -Wextra
 
-FSRCS =
+FSRCS = push_functions.c \
+		reverse_rotate.c \
+		rotate.c \
+		swap.c \
+		push.c \
 
 
 OFILES = $(FSRCS:.c=.o)

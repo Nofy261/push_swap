@@ -19,19 +19,19 @@ void	push_to_a(t_list **stack_a, t_list **stack_b);
 void	push_to_b(t_list **stack_a, t_list **stack_b);
 
 /* Swap */
-int    ft_swap_node(t_list **stack);
-int    swap_a(t_list **stack);
+int    swap_nodes(t_list **stack, char x);
+int    swap_nodes_only(t_list **stack);
+void    swap_a_and_b(t_list **stack_a, t_list **stack_b);
 
 /* Rotate */
-void	rotate_a(t_list **stack_a);
-void	rotate_b(t_list **stack_b);
-void	rotate_a_and_b(t_list **stack_a, t_list stack_b);
+void	rotate(t_list **stack, char x);
+void	rotate_only(t_list **stack);
+void	rotate_a_and_b(t_list **stack_a, t_list **stack_b);
 
 /* Reverse and Rotate */
- void	reverse_rotate_a(t_list **stack_a);
- void	reverse_rotate_b(t_list **stack_b);
- void	reverse_rotate_a_and_b(t_list **stack_a, t_list **stack_b);
-
+void	reverse_rotate(t_list **stack, char x);
+void	reverse_rotate_only(t_list **stack);
+void	reverse_rotate_a_and_b(t_list **stack_a, t_list **stack_b);
 
 
 #endif
