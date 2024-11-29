@@ -6,12 +6,12 @@
 // sa ✅
 // sb ✅
 // ss ✅
-// ra ❌
-// rb ❌
-// rr ❌
-// rra ❌
-// rrb ❌
-// rrr ❌
+// ra ✅
+// rb ✅
+// rr ✅
+// rra ✅
+// rrb ✅
+// rrr ✅
 
 int    ft_swap_node(t_list **stack)
 {
@@ -49,4 +49,5 @@ void    swap_a_and_b(t_list **stack_a, t_list **stack_b)
 {
     swap_a(&stack_a);
     swap_b(&stack_b);
+    write(1, "ss\n", 3);
 }
