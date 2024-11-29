@@ -1,5 +1,18 @@
 #include "push_swap.h"
 
+
+// pa ✅
+// pb ✅
+// sa ✅
+// sb ✅
+// ss ✅
+// ra ❌
+// rb ❌
+// rr ❌
+// rra ❌
+// rrb ❌
+// rrr ❌
+
 int    ft_swap_node(t_list **stack)
 {
     t_list    *tmp_node;
@@ -25,5 +38,15 @@ int    swap_a(t_list **stack)
     write(1, "sa\n", 3);
     return (0);
 }
-
-// faire swap b 
+int swap_b(t_list **stack)
+{
+    if (ft_swap_node(stack) == -1)
+        return (-1);
+    write(1, "sb\n", 3);
+    return (0);
+}
+void    swap_a_and_b(t_list **stack_a, t_list **stack_b)
+{
+    swap_a(&stack_a);
+    swap_b(&stack_b);
+}
