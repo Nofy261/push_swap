@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:12:35 by nolecler          #+#    #+#             */
-/*   Updated: 2024/11/30 08:12:38 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/11/30 09:23:16 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ typedef struct s_list
 /*  Utils */
 void	ft_lstadd_front(t_list **lst, t_list *new);
 t_list	*ft_lstlast(t_list *lst);
-int	ft_lstsize(t_list *lst);
+int		ft_lstsize(t_list *lst);
 
 /* Push */
 void	push_to_a(t_list **stack_a, t_list **stack_b);
@@ -45,6 +45,8 @@ void	rotate_a_and_b(t_list **stack_a, t_list **stack_b);
 void	reverse_rotate(t_list **stack, char x);
 void	reverse_rotate_only(t_list **stack);
 void	reverse_rotate_a_and_b(t_list **stack_a, t_list **stack_b);
+
+
 
 
 #endif

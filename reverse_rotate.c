@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:13:13 by nolecler          #+#    #+#             */
-/*   Updated: 2024/11/30 08:13:16 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/11/30 09:21:03 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,8 +21,8 @@ void	reverse_rotate(t_list **stack, char x)
 	if (ft_lstsize(*stack) <= 1)
 		return ;
 	tmp = (*stack);
-	ft_lstlast(stack)->next = (*stack);
-	(*stack) = ft_lstlast(stack);
+	ft_lstlast(*stack)->next = (*stack);
+	(*stack) = ft_lstlast(*stack);
 	(*stack)->next = tmp;
 	tmp->next=NULL;
 	if (x == 'a')
@@ -37,8 +37,8 @@ void   reverse_rotate_only(t_list **stack)
 	if (ft_lstsize(*stack) <= 1)
 		return ;
 	tmp = (*stack);
-	ft_lstlast(stack)->next = (*stack);
-	(*stack) = ft_lstlast(stack);
+	ft_lstlast(*stack)->next = (*stack);
+	(*stack) = ft_lstlast(*stack);
 	(*stack)->next = tmp;
 	tmp->next=NULL;
 }

@@ -6,7 +6,7 @@
 #    By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/30 08:12:18 by nolecler          #+#    #+#              #
-#    Updated: 2024/11/30 09:16:47 by nolecler         ###   ########.fr        #
+#    Updated: 2024/11/30 09:28:45 by nolecler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ FSRCS = push.c \
 		reverse_rotate.c \
 		rotate.c \
 		swap.c \
-		push.c \
+		utils.c \
+		main.c \
 
 
 OFILES = $(FSRCS:.c=.o)
@@ -28,7 +29,7 @@ OFILES = $(FSRCS:.c=.o)
 all : $(NAME)
 
 $(NAME) : $(OFILES)
-		 $(NAME) $(OFILES)
+	$(CC) $(OFILES) -o $(NAME)
 
 clean :
 	rm -f $(OFILES)
