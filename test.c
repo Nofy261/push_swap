@@ -12,6 +12,7 @@ void	print_function(t_list *ptr)
 //swap_nodes_only(&ptr);
 //sa et sb : swap_nodes(&ptr, 'b'); ou 'a';
 //ra et rb : decale d'une position vers le haut, le 1er devient dernier
+//rra et rrb : decale d'une position vers le bas , le dernier devient le 1er
 int main(void)
 {
 	t_list	*ptr;
@@ -42,6 +43,7 @@ int main(void)
 	//swap_nodes(&ptr, 'b'); ou 'a';
 	//rotate_only(&ptr) OU rotate_only(&stack_a);
 	//rotate(&ptr, 'b') OU rotate_only(&stack_a, 'b');
+	//reverse_rotate_only(&stack);
 	print_function(ptr);
 	//free();
 	return (0);
@@ -49,6 +51,7 @@ int main(void)
 //ss : swap_a_and_b
 //pa, pb : push_to_a && push_to_b
 // rr : rotate_a_and_b
+// rrr : reverse_rotate_a_and_b
 int main(void)
 {
 	t_list *stack_a;
@@ -105,6 +108,7 @@ int main(void)
 	//push_to_b(&stack_a, &stack_b);
 	//push_to_a(&stack_a, &stack_b);
 	//rotate_a_and_b(&stack_a, &stack_b);
+	//reverse_rotate_a_and_b(&stack_a, stack_b);
 	printf("\n");
 	print_function(stack_a);
 	printf("\n");
