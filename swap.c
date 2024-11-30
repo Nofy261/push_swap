@@ -6,16 +6,14 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:13:35 by nolecler          #+#    #+#             */
-/*   Updated: 2024/11/30 08:13:38 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/11/30 09:48:30 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 
 int    swap_nodes(t_list **stack, char x)
 {
-
     t_list    *tmp_node;
 
     if (ft_lstsize(*stack) < 2)

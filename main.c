@@ -6,21 +6,25 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:11:31 by nolecler          #+#    #+#             */
-/*   Updated: 2024/11/30 09:25:50 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/11/30 12:04:21 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
  #include "push_swap.h"
  #include <stdlib.h>
+ #include <stdio.h>
  
-//creer un main 
-//compiler
-//tester: sa sb pa pb ra rb rr rra rrb rrr
-
-//creer une liste chaine pile a 
-// y mettre des noeuds et tester ra etc...
-//test avec swap_nodes_only : swap les 2premiers elements
-
+//creer un main ✅️
+//compile + teste: 
+// sa ✅️		ra ✅️
+// sb ✅️		rb ✅️
+// ss ✅️		rr ✅️
+// pa ✅️		rra ❌
+// pb ✅️		rrb ❌
+// rrr ❌
+//reverse_rotate_only
+//reverse_rotate
+//reverse_rotate_a_and_b
 
 t_list	*ft_lstnew(int value)
 {
@@ -33,50 +37,73 @@ t_list	*ft_lstnew(int value)
 	newnode->next = NULL;
 	return (newnode);
 }
-
-#include <stdio.h>
+void	print_function(t_list *ptr)
+{
+	while (ptr)
+	{
+		printf("%d\n", ptr->value);
+		ptr = ptr->next;
+	}
+}
 
 int main(void)
 {
+	t_list *stack_a;
+	//t_list *stack_b;
 	
-	t_list	*ptr;
-	ptr = NULL;
+	stack_a = NULL;
+	//stack_b = NULL;
 	
-	t_list	*node1;
-	t_list	*node2;
-	t_list	*node3;
-	t_list	*node4;
-	
-	int n1 = 1;
-	int	n2 = 2;
-	int	n3 = 3;
-	int	n4 = 4;
-	
-	node1 = ft_lstnew(n1);
-	node2 = ft_lstnew(n2);
-	node3 = ft_lstnew(n3);
-	node4 = ft_lstnew(n4);
-	
-	ft_lstadd_front(&ptr, node4);
-	ft_lstadd_front(&ptr, node3);
-	ft_lstadd_front(&ptr, node2);
-	ft_lstadd_front(&ptr, node1);
+	t_list	*a1;
+	t_list	*a2;
+	t_list	*a3;
+	t_list	*a4;
 
-	printf("node1 %d\n", ptr->value);
-	printf("node2 %d\n", ptr->next->value);
-	printf("node3 %d\n", ptr->next->next->value);
-	printf("node4 %d\n", ptr->next->next->next->value);
-
-	swap_nodes_only(&ptr);
+	//t_list	*b1;
+	//t_list	*b2;
+	//t_list	*b3;
+	//t_list	*b4;
 	
-	printf("resultat apres appel de la fonction\n");
+	int na1 = 1;
+	int	na2 = 2;
+	int	na3 = 3;
+	int	na4 = 4;
+	
+	//int nb1 = 1;
+	//int	nb2 = 2;
+	//int	nb3 = 3;
+	//int	nb4 = 4;
+	
+	a1 = ft_lstnew(na1);
+	a2 = ft_lstnew(na2);
+	a3 = ft_lstnew(na3);
+	a4 = ft_lstnew(na4);
+	
+	//b1 = ft_lstnew(nb1);
+	//b2 = ft_lstnew(nb2);
+	//b3 = ft_lstnew(nb3);
+	//b4 = ft_lstnew(nb4);
+	
+	ft_lstadd_front(&stack_a, a4);
+	ft_lstadd_front(&stack_a, a3);
+	ft_lstadd_front(&stack_a, a2);
+	ft_lstadd_front(&stack_a, a1);
+	
+	//ft_lstadd_front(&stack_b, b4);
+	//ft_lstadd_front(&stack_b, b3);
+	//ft_lstadd_front(&stack_b, b2);
+	//ft_lstadd_front(&stack_b, b1);
 
-	printf("node1 %d\n", ptr->value);
-	printf("node2 %d\n", ptr->next->value);
-	printf("node3 %d\n", ptr->next->next->value);
-	printf("node4 %d\n", ptr->next->next->next->value);
-
-
+	print_function(stack_a);
+	printf("\n");
+	//print_function(stack_b);
+	printf("\n");
+	reverse_rotate_only(&stack_a);
+	printf("\n");
+	print_function(stack_a);
+	printf("\n");
+	//print_function(stack_b);
+	//free();
 	return (0);
 }
 
