@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:11:31 by nolecler          #+#    #+#             */
-/*   Updated: 2024/11/30 12:35:14 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/03 11:49:53 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,14 +14,7 @@
  #include <stdlib.h>
  #include <stdio.h>
  
-//creer un main ✅️
-//compile + teste: 
-// sa ✅️		ra ✅️
-// sb ✅️		rb ✅️
-// ss ✅️		rr ✅️
-// pa ✅️		rra ✅️
-// pb ✅️		rrb ✅️
-// rrr ✅️
+ 
 //reverse_rotate_only ✅️ a revoir comprehension 
 //reverse_rotate ✅️
 //reverse_rotate_a_and_b ✅️
