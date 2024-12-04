@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:11:31 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/03 11:49:53 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/04 15:40:54 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,22 +14,9 @@
  #include <stdlib.h>
  #include <stdio.h>
  
- 
+
 //reverse_rotate_only ✅️ a revoir comprehension 
-//reverse_rotate ✅️
-//reverse_rotate_a_and_b ✅️
 
-t_list	*ft_lstnew(int value)
-{
-	t_list	*newnode;
-
-	newnode = malloc(sizeof(t_list));
-	if (!newnode)
-		return (NULL);
-	newnode->value = value;
-	newnode->next = NULL;
-	return (newnode);
-}
 void	print_function(t_list *ptr)
 {
 	while (ptr)

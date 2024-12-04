@@ -1,8 +1,18 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   parsing.c                                          :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/12/04 15:35:20 by nolecler          #+#    #+#             */
+/*   Updated: 2024/12/04 15:47:26 by nolecler         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "push_swap.h"
 
-//verifier le nombre d argument 
-// si c'est 1 ou moins = erreur 
-int verif_argc(int argc)
+int verif_argc(int argc) //s'il y a juste un argument
 {
 	if (argc <= 1)
 	{
@@ -18,8 +28,8 @@ int	ft_isdigit(int c)
 		return (1);
 	return (0);
 }
-//creer une fonction qui parcourt un tableau de tableau 
-int	check_sign(char **argv)
+
+int	check_sign(char **argv) // on regarde si apres le - ou + c'est bien un chiffre 
 {
 	int	i;
 	int	j;
@@ -40,6 +50,7 @@ int	check_sign(char **argv)
 				return (0);
 			i++;//on va checker les autres chiffres/caractere?
 		}
+		//j++; a rajouter ou pas??
 	}
 	if (i == 0)
 		return (1);
@@ -72,8 +83,53 @@ int	main(int argc, char **argv)
 		tableau = ft_split(argv[i], ' ');
 		
 	}
-
-
-
 }
+// est ce qu on gere si on met une tabulation entre les chiffres et non un espace??
+void	check_errors(char *str) //cas ++++++667778764
+{	
+	if (ft_atoi(str) == 0) // si atoi retourne 0; //a voir car si +7ab56 : atoi retourne 7;
+	{
+		write (1, "Error\n", 6);
+		return ; // on arrete le programme;
+	}
+	//else ?? necessaire ou pas??
+}
+
+
+
+//parcourir tout le tab de tab
+// dans la boucle on appelle la fonction check_errors puis on appel l atoi normal
+//stocker la valeur de retour de atoi dans value et value sera un int
+//mettre value dans un node
+//ajouter ce node a la liste a
+// ajoute le node a la fin de la liste a
+
+void	parse_arguments(t_list **stack_a, char **big_argv)
+{
+	int	i;
+	int	j;
+	int	value;
+	t_list *newnode;
+	//t_list *stack_a = NULL; necessaire ou pas?
+
+	value = 0;
+	i = 0;
+	j = 1;
+	while (big_argv[j] != '\0')
+	{
+		i = 0;
+		while (big_argv[j][i])
+		{
+			check_errors(big_argv[j]);
+			//rajouter la fonction check_sign ici ??
+			value = ft_atoi(big_argv[j]);
+			newnode = ft_lstnew(value); //creer un noeud
+			ft_lstadd_back(&stack_a, newnode); //place le noeud dans la liste
+			//i++;?? qu'est ce qu'on incremente ici?
+		}
+		j++;
+	}
+}
+//gerer +99 99 = meme chose et +99  -99 == n'est pas la meme valeur 
+// gerer int min et int max
 
