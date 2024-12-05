@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:35:20 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/04 15:47:26 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/05 13:56:31 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -133,3 +133,25 @@ void	parse_arguments(t_list **stack_a, char **big_argv)
 //gerer +99 99 = meme chose et +99  -99 == n'est pas la meme valeur 
 // gerer int min et int max
 
+//verifier si le meme arg ne revient pas 2fois
+//faire une boucle qui parcourt la liste jusqu a la fin
+// N’oubliez pas que vous devez afficher 'Error' sur la sortie d’erreur (stderr, fd 2) !
+
+int	check_double(t_list **stack_a)
+{
+	t_list *current = stack_a;
+	while (current)
+	{
+		t_list *next_list = current->next;
+		while(next_list)
+		{
+			if (current->value == next_list->value)
+			{
+				printf("error");
+				return (-1);
+			}
+			next_list = next_list->next; 
+		}
+		current = current->next;
+	}
+}

@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:11:31 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/04 15:40:54 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/05 13:51:23 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
  #include <stdlib.h>
  #include <stdio.h>
  
-
+t_list	*ft_lstnew(int value);
 //reverse_rotate_only ✅️ a revoir comprehension 
 
 void	print_function(t_list *ptr)
