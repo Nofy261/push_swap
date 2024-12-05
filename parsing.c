@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:35:20 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/05 13:56:31 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/05 14:18:03 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -139,19 +139,19 @@ void	parse_arguments(t_list **stack_a, char **big_argv)
 
 int	check_double(t_list **stack_a)
 {
-	t_list *current = stack_a;
-	while (current)
+	t_list *node = stack_a;
+	while (node)
 	{
-		t_list *next_list = current->next;
-		while(next_list)
+		t_list *next_node = node->next;
+		while(next_node)
 		{
-			if (current->value == next_list->value)
+			if (node->value == next_node->value)
 			{
-				printf("error");
-				return (-1);
+				return (1);
 			}
-			next_list = next_list->next; 
+			next_node = next_node->next; 
 		}
-		current = current->next;
+		node = node->next;
 	}
+	return (0);
 }
