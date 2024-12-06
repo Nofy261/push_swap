@@ -6,21 +6,30 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:35:20 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/06 10:22:36 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/06 12:12:13 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 
-// gerer int min et int max ❌
-// est ce qu on gere si on met une tabulation entre les chiffres et non un espace??❌ 
+// gerer int min et int max ❌ 
+
+// fonction pour voir si il est deja trier  int	is_sorted(t_list *stack)  ❌ 
+// appel ft_lstsize pour voir le nombre de node que contient la liste chainee 
+// et stock le retour dans un int ❌ 
+// Si il y a que deux chiffres fais une fonction qui fais un trie par deux (swap)
+
+#include <stdio.h>
+
+//dans la pile a , il y a des nodes, je dois verifier si les nodes sont trier ou pas
+//fonction qui compare les nodes, 
 
 
-//boucle qui parcourt argc ✅
-//fonction qui stocke argv  ❌
-//split sur les espaces ✅
-//creer un tableau de tableau et stocke la valeur de retour de ft_split ❌
+
+
+
+
 
 
 int	main(int argc, char **argv)
@@ -29,11 +38,11 @@ int	main(int argc, char **argv)
 
 	i = 1;
 	char **cut_argv;
-	t_list *list_a;
-	t_list *list_b;
+	t_list *stack_a;
+	t_list *stack_b;
 
-	list_a = NULL;
-	list_b = NULL;
+	stack_a = NULL;
+	stack_b = NULL;
 	cut_argv = NULL;
 	if (verif_argc(argc) == 1 || check_sign(argv) == 1)
 	{
@@ -42,10 +51,11 @@ int	main(int argc, char **argv)
 	}
 	while (i < argc)
 	{
-		
 		cut_argv = ft_split(argv[i], ' ');
-		
+		parse_arguments(&stack_a, cut_argv);	
+		i++;
 	}
+	check_double(&stack_a);
 }
 
 
