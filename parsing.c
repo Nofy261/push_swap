@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/12/04 15:35:20 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/05 14:18:03 by nolecler         ###   ########.fr       */
+/*   Created: 2024/12/06 09:21:12 by nolecler          #+#    #+#             */
+/*   Updated: 2024/12/06 10:14:49 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,13 +19,6 @@ int verif_argc(int argc) //s'il y a juste un argument
 		write (1, "Error\n", 6);
 		return (1);
 	}
-	return (0);
-}
-
-int	ft_isdigit(int c)
-{
-	if (c >= '0' && c <= '9')
-		return (1);
 	return (0);
 }
 
@@ -58,33 +51,6 @@ int	check_sign(char **argv) // on regarde si apres le - ou + c'est bien un chiff
 	return(0);
 }
 
-//boucle qui parcourt argc
-//fonction qui stocke argv
-//split sur les espaces
-//creer un tableau de tableau et stocke la valeur de retour de ft_split
-int	main(int argc, char **argv)
-{
-	int	i;
-
-	i = 1;
-	char **tableau;
-	t_list *list_a;
-	t_list *list_b;
-
-	list_a = NULL;
-	list_b = NULL;
-	if (verif_argc(argc) == 1 || check_sign(argv) == 1)
-	{
-		ft_putstr_fd("Error\n", 2);
-		exit(EXIT_FAILURE);
-	}
-	while (i < argv)
-	{
-		tableau = ft_split(argv[i], ' ');
-		
-	}
-}
-// est ce qu on gere si on met une tabulation entre les chiffres et non un espace??
 void	check_errors(char *str) //cas ++++++667778764
 {	
 	if (ft_atoi(str) == 0) // si atoi retourne 0; //a voir car si +7ab56 : atoi retourne 7;
@@ -95,27 +61,18 @@ void	check_errors(char *str) //cas ++++++667778764
 	//else ?? necessaire ou pas??
 }
 
-
-
-//parcourir tout le tab de tab
-// dans la boucle on appelle la fonction check_errors puis on appel l atoi normal
-//stocker la valeur de retour de atoi dans value et value sera un int
-//mettre value dans un node
-//ajouter ce node a la liste a
-// ajoute le node a la fin de la liste a
-
-void	parse_arguments(t_list **stack_a, char **big_argv)
+void	parse_arguments(t_list **stack_a, char **big_argv)// on met les nodes qui sont donnes en argument dans la stack_a
 {
 	int	i;
 	int	j;
 	int	value;
 	t_list *newnode;
-	//t_list *stack_a = NULL; necessaire ou pas?
-
+	//t_list *stack_a = NULL; : non necessaire 
+	
 	value = 0;
 	i = 0;
 	j = 1;
-	while (big_argv[j] != '\0')
+	while (big_argv[j])
 	{
 		i = 0;
 		while (big_argv[j][i])
@@ -124,22 +81,16 @@ void	parse_arguments(t_list **stack_a, char **big_argv)
 			//rajouter la fonction check_sign ici ??
 			value = ft_atoi(big_argv[j]);
 			newnode = ft_lstnew(value); //creer un noeud
-			ft_lstadd_back(&stack_a, newnode); //place le noeud dans la liste
-			//i++;?? qu'est ce qu'on incremente ici?
+			ft_lstadd_back(stack_a, newnode); //place le noeud dans la liste
+			//i++; //?? qu'est ce qu'on incremente ici?
 		}
 		j++;
 	}
 }
-//gerer +99 99 = meme chose et +99  -99 == n'est pas la meme valeur 
-// gerer int min et int max
 
-//verifier si le meme arg ne revient pas 2fois
-//faire une boucle qui parcourt la liste jusqu a la fin
-// N’oubliez pas que vous devez afficher 'Error' sur la sortie d’erreur (stderr, fd 2) !
-
-int	check_double(t_list **stack_a)
+int	check_double(t_list **stack_a) //test ok
 {
-	t_list *node = stack_a;
+	t_list *node = *stack_a;
 	while (node)
 	{
 		t_list *next_node = node->next;

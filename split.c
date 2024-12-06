@@ -1,22 +1,33 @@
 #include <stdlib.h>
 
-int	count_words(char *str)
-{
-	int	i;
-	int	count;
 
+static size_t	count_words(const char *s, char c)
+{
+	size_t	i;
+	size_t	counter;
+	size_t	is_word;
+
+	is_word = 0;
 	i = 0;
-	count = 0;
-	while (str[i])
+	counter = 0;
+	while (s[i])
 	{
-		if ((str[i] != 32 && str[i] != 9)  && (str[i + 1] == 32 || str[i + 1] == 9 || str[i + 1] == '\0'))
-				count++;
+		if ((s[i] != c))
+		{
+			if (is_word == 0)
+			{
+				counter++;
+				is_word = 1;
+			}
+		}
+		else
+			is_word = 0;
 		i++;
 	}
-	return (count);
+	return (counter);
 }
 
-void	*free_all(char **str)
+static void	*free_all(char **str)
 {
 	int	i;
 
@@ -30,12 +41,12 @@ void	*free_all(char **str)
 	return (NULL);
 }
 
-void	fill_result(char *new, char *str)
+static void	fill_result(char *new, char const *str, char c)
 {
-	int	i;
+	size_t	i;
 
 	i = 0;
-	while (str[i] && str[i] != 32)
+	while (str[i] && str[i] != c)
 	{
 		new[i] = str[i];
 		i++;
@@ -43,25 +54,25 @@ void	fill_result(char *new, char *str)
 	new[i] = '\0';
 }
 
-void	set_mem(char **result, char *str)
+static void	set_mem(char **result, char const *str, char sep)
 {
-	int	count;
-	int	j;
-	int	i;
+	size_t	count;
+	size_t	j;
+	size_t	i;
 
 	j = 0;
 	i = 0;
 	while (str[j])
 	{
 		count = 0;
-		while (str[j + count] && str[j + count] != 32)
+		while (str[j + count] && str[j + count] != sep)
 			count++;
 		if (count > 0)
 		{
 			result[i] = malloc(sizeof(char) * (count + 1));
 			if (!result[i])
 				(free_all(result));
-			fill_result(result[i], (str + j));
+			fill_result(result[i], (str + j), sep);
 			i++;
 			j = j + count;
 		}
@@ -71,34 +82,17 @@ void	set_mem(char **result, char *str)
 	result[i] = 0;
 }
 
-char	**ft_split(char *s)
+char	**ft_split(char const *s, char c)
 {
-	int	words;
+	size_t	words;
 	char	**result;
 
 	if (!s)
 		return (NULL);
-	words = count_words(s);
+	words = count_words(s, c);
 	result = malloc(sizeof(char *) * (words + 1));
 	if (!result)
 		return (NULL);
-	set_mem(result, s);
+	set_mem(result, s, c);
 	return (result);
-}
-#include <stdio.h>
-
-int main(void)
-{
-	char s[] = "Bonjour Les Amis";
-	char **result;
-
-	int i = 0;
-	result = ft_split(s);
-	while (result[i])
-	{
-		printf("%s\n", result[i]);
-		free(result[i]);//free case par case 
-		i++;
-	}
-	free(result);
 }

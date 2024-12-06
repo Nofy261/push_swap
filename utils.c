@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:13:44 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/04 15:41:19 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/06 09:10:12 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,32 +74,3 @@ t_list	*ft_lstnew(int value)
 	return (newnode);
 }
 
-
-int	ft_atoi(char *str)
-{
-	int	i;
-	int	sign;
-	int	stock;
-
-	i = 0;
-	sign = 1;
-	stock = 0;
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))//enlever la tabulation??
-		i++;
-	while (str[i] == '-' || str[i] == '+')
-	{
-		if (str[i + 1] == '-')
-			return (0);
-		if (str[i + 1] == '+')
-			return (0);
-		if (str[i] == '-')
-			sign = sign * -1;
-		i++;
-	}
-	while (str[i] >= '0' && str[i] <= '9')
-	{
-		stock = stock * 10 + (str[i] - '0');
-		i++;
-	}
-	return (stock * sign);	
-}

@@ -6,7 +6,7 @@
 #    By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/30 08:12:18 by nolecler          #+#    #+#              #
-#    Updated: 2024/11/30 09:28:45 by nolecler         ###   ########.fr        #
+#    Updated: 2024/12/06 10:19:49 by nolecler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,12 @@ FSRCS = push.c \
 		rotate.c \
 		swap.c \
 		utils.c \
+		utils2.c \
 		main.c \
+		parsing.c \
+		split.c \
+		# main_of_test.c
+		
 
 
 OFILES = $(FSRCS:.c=.o)
