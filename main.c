@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:35:20 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/07 12:55:26 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/07 15:17:19 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	is_sorted(t_list *stack_a)
 	return (0);	
 }
 
-void	sorting_for_2(t_list *stack_a)
+void	sort_2(t_list *stack_a)
 {
 	int	i;
 	
@@ -50,9 +50,35 @@ void	sorting_for_2(t_list *stack_a)
 	if (i == 2)
 		swap_nodes(&stack_a, 'a');
 }
-//creer une fonction qui trie 3nombres
+//creer une fonction qui determine qui est le plus grand des nodes
 
-void	sorting_for_3(t_list **stack_a)
+// Définir une variable max = premier élément de la pile.
+// Tant qu'il reste des éléments dans la pile :
+// a. Comparer la valeur de l'élément courant avec la valeur de max.
+// b. Si la valeur de l'élément courant est plus grande :
+// i. Mettre max à jour avec cet élément.
+// c. Passer à l'élément suivant.
+// Retourner max.
+
+t_list    *find_max(t_list *stack_a)
+{
+	t_list *max = stack_a;
+	
+	while(stack_a)
+	{
+		if(stack_a->value < stack_a->next->value)
+			max = stack_a->next;
+		stack_a = stack_a->next;
+	}
+	return (max);
+}
+
+
+
+
+
+//creer une fonction qui trie 3nombres
+void	sort_3(t_list **stack_a)
 {
 	int	i;
 	int	position;
@@ -60,9 +86,6 @@ void	sorting_for_3(t_list **stack_a)
 	position = 0;// ou 1??
 	i = ft_lstsize(stack_a);
 	t_list	*node = *stack_a;
-	
-	
-	
 	
 	if (i == 3)
 	{
@@ -111,7 +134,7 @@ int	main(int argc, char **argv)
 	check_double(&stack_a);
 	if (is_sorted(stack_a) == 1)
 	{
-		sorting_for_2(stack_a);
+		sort_2(stack_a);
 	}
 }
 
