@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 09:21:12 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/06 11:39:21 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/07 12:46:35 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,7 +75,7 @@ void	parse_arguments(t_list **stack_a, char **big_argv)// on met les nodes qui s
 
 int	check_double(t_list **stack_a) //test ok
 {
-	t_list *node = *stack_a;
+	t_list *node = *stack_a;// ecriture valable ou d'abord initialiser et ensuite donner la valeur??
 	while (node)
 	{
 		t_list *next_node = node->next;

@@ -6,19 +6,19 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:35:20 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/06 16:20:38 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/07 12:55:26 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
 
 // gerer int min et int max ❌ 
 
 // fonction pour voir si il est deja trier  int	is_sorted(t_list *stack)  ✅ 
 // appel ft_lstsize pour voir le nombre de node que contient la liste chainee 
 // et stock le retour dans un int ❌ 
-// Si il y a que deux chiffres fais une fonction qui fais un trie par deux (swap)
+// Si il y a que deux chiffres fais une fonction qui fais un trie par deux (swap)  ✅ 
+// creer une fonction qui fait un tri de 3 nombres
 
 #include <stdio.h>
 
@@ -26,8 +26,6 @@
 // = 0 veut dire que c'est triee
 
 //Si aucun paramètre n’est spécifié, le programme ne doit rien afficher et rendre l’invite de commande.(cf sujet) 
-
-
 
 int	is_sorted(t_list *stack_a)
 {
@@ -42,6 +40,49 @@ int	is_sorted(t_list *stack_a)
 	}
 	printf("c'est deja triee");
 	return (0);	
+}
+
+void	sorting_for_2(t_list *stack_a)
+{
+	int	i;
+	
+	i = ft_lstsize(stack_a);
+	if (i == 2)
+		swap_nodes(&stack_a, 'a');
+}
+//creer une fonction qui trie 3nombres
+
+void	sorting_for_3(t_list **stack_a)
+{
+	int	i;
+	int	position;
+	
+	position = 0;// ou 1??
+	i = ft_lstsize(stack_a);
+	t_list	*node = *stack_a;
+	
+	
+	
+	
+	if (i == 3)
+	{
+		//si node2 est en debut de la liste et node3 a la fin de la liste
+		//--> "sa"
+
+		// si node3 est au debut et node1 a la fin 
+		//--> "sa" puis "rra"
+
+		//si node3 au debut et node2 a la fin
+		// --> "ra"
+		
+		//si node1 au debut et node2 a la fin
+		//--> "sa" puis "ra"
+
+		//si node1 a la fin et node2 au debut
+		//--> "rra"
+	}
+	
+
 }
 
 int	main(int argc, char **argv)
@@ -68,7 +109,10 @@ int	main(int argc, char **argv)
 		i++;
 	}
 	check_double(&stack_a);
-	is_sorted(stack_a);
+	if (is_sorted(stack_a) == 1)
+	{
+		sorting_for_2(stack_a);
+	}
 }
 
 
