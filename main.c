@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:35:20 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/10 13:52:54 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/10 16:14:45 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,9 +16,11 @@
 // fonction pour voir si il est deja trier  int	is_sorted(t_list *stack)  ✅ 
 // Si il y a que deux chiffres fais une fonction qui fais un trie par deux (swap)  ✅ 
 // creer une fonction qui fait un tri de 3 nombres ✅
-//creer une fonction qui determine qui est le plus grand des nodes  ✅ 
+// creer une fonction qui determine qui est le plus grand des nodes  ✅ 
+// gerer le 0 envoyee en argument ❌
 
 #include <stdio.h>
+
 
 void	sort_2(t_list *stack_a)
 {
@@ -29,7 +31,7 @@ void	sort_2(t_list *stack_a)
 		swap_nodes(&stack_a, 'a');
 }
 
-t_list    *find_max(t_list *stack_a)
+static	t_list    *find_max(t_list *stack_a)
 {
 	t_list *max = stack_a;
 	
@@ -41,7 +43,8 @@ t_list    *find_max(t_list *stack_a)
 	}
 	return (max);
 }
-t_list    *find_min(t_list *stack_a)
+
+static	t_list    *find_min(t_list *stack_a)
 {
 	t_list *min = stack_a; //les deux pointent vers un meme maillon
 	
@@ -53,6 +56,7 @@ t_list    *find_min(t_list *stack_a)
 	}
 	return (min);
 }
+
 void	sort_3(t_list *stack_a)
 {
 	t_list	*min;
@@ -64,23 +68,39 @@ void	sort_3(t_list *stack_a)
 	{
 		if (stack_a->next->value == min->value && stack_a->next->next->value == max->value)
 			swap_nodes(&stack_a, 'a');
-		if (stack_a->value == max->value && stack_a->next->next->value == min->value)
+		else if (stack_a->value == max->value && stack_a->next->next->value == min->value)
 		{
 			swap_nodes(&stack_a, 'a');
 			reverse_rotate(&stack_a, 'a');
 		}
-		if (stack_a->value == max->value && stack_a->next->value == min->value)
+		else if (stack_a->value == max->value && stack_a->next->value == min->value)
 			rotate(&stack_a, 'a');
-		if (stack_a->value == min->value && stack_a->next->value == max->value)
+		else if (stack_a->value == min->value && stack_a->next->value == max->value)
 		{
 			swap_nodes(&stack_a, 'a');
 			rotate(&stack_a, 'a');
 		}
-		if (stack_a->next->value == max->value && stack_a->next->next->value == min->value)
+		else if (stack_a->next->value == max->value && stack_a->next->next->value == min->value)
 			reverse_rotate(&stack_a, 'a');
 	}
+	
 }
+// creer une fonction qui fait un tri de 5 nombres ❌
 
+// Tri de 5 : trouver les 2 pplus petits, les push dans b, tri de 3 de stack_a, ❌
+			//si le 1er chiffre dans stack_b est plus grand que le 2eme , pa 2fois sinon sb et pa 2fois ❌
+
+void	sort_5(t_list *stack_a, t_list *stack_b)
+{
+	
+
+
+
+
+
+
+
+}
 
 // = 1 veut dire que ce n'est pas triee -> Donc creer une fonction qui va trier = ALGORITHME ❌
 // = 0 veut dire que c'est triee
@@ -128,8 +148,11 @@ int	main(int argc, char **argv)
 	check_double(&stack_a);
 	if (is_sorted(stack_a) == 1)
 	{
+		//si stack_a = 2 nombres
 		sort_2(stack_a);
+		//si stack_a = 
 		sort_3(stack_a);
+		//sort_5(stack_a, stack_b);
 	}
 }
 
