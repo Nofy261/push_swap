@@ -6,22 +6,19 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:35:20 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/10 12:55:11 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/10 13:52:54 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // gerer int min et int max ❌ 
-
 // fonction pour voir si il est deja trier  int	is_sorted(t_list *stack)  ✅ 
-// appel ft_lstsize pour voir le nombre de node que contient la liste chainee 
-// et stock le retour dans un int ❌ 
 // Si il y a que deux chiffres fais une fonction qui fais un trie par deux (swap)  ✅ 
-// creer une fonction qui fait un tri de 3 nombres
+// creer une fonction qui fait un tri de 3 nombres ✅
+//creer une fonction qui determine qui est le plus grand des nodes  ✅ 
 
 #include <stdio.h>
-
 
 void	sort_2(t_list *stack_a)
 {
@@ -31,15 +28,6 @@ void	sort_2(t_list *stack_a)
 	if (i == 2)
 		swap_nodes(&stack_a, 'a');
 }
-//creer une fonction qui determine qui est le plus grand des nodes  ✅ 
-
-// Définir une variable max = premier élément de la pile.
-// Tant qu'il reste des éléments dans la pile :
-// a. Comparer la valeur de l'élément courant avec la valeur de max.
-// b. Si la valeur de l'élément courant est plus grande :
-// i. Mettre max à jour avec cet élément.
-// c. Passer à l'élément suivant.
-// Retourner max.
 
 t_list    *find_max(t_list *stack_a)
 {
@@ -56,7 +44,6 @@ t_list    *find_max(t_list *stack_a)
 t_list    *find_min(t_list *stack_a)
 {
 	t_list *min = stack_a; //les deux pointent vers un meme maillon
-	//t_list *min = *stack_a; = acces a la valeur du maillon pointee par stack_a
 	
 	while(stack_a)
 	{
@@ -66,46 +53,31 @@ t_list    *find_min(t_list *stack_a)
 	}
 	return (min);
 }
-
-//creer une fonction qui trie 3nombres
 void	sort_3(t_list *stack_a)
 {
-	int	i;
 	t_list	*min;
 	t_list	*max;
 
 	min = find_min(stack_a);
 	max = find_max(stack_a);
-	i = ft_lstsize(stack_a);
-	//t_list	*node = stack_a; //node et stack_a pointe vers le meme maillon
-
-	//Un pointeur qui pointe vers le premier element de la liste
-	//un pointeur qui pointe vers le max
-	//un pointeur qui pointe le min
-
-	if (i == 3)
+	if (ft_lstsize(stack_a) == 3)
 	{
-		//si max est a la fin et min au milieu : sa
-		
-
-		//si max au debut et min a la fin : sa puis rra
-		
-
-		//si max au debut et min au milieu : ra
-		//if (stack_a->value == max->value && stack_a->next->value == min->value)
-		//	rotate(&stack_a, 'a');
-					
-		
-		
-		//si min au debut et max au milieu : sa puis ra
+		if (stack_a->next->value == min->value && stack_a->next->next->value == max->value)
+			swap_nodes(&stack_a, 'a');
+		if (stack_a->value == max->value && stack_a->next->next->value == min->value)
+		{
+			swap_nodes(&stack_a, 'a');
+			reverse_rotate(&stack_a, 'a');
+		}
+		if (stack_a->value == max->value && stack_a->next->value == min->value)
+			rotate(&stack_a, 'a');
 		if (stack_a->value == min->value && stack_a->next->value == max->value)
 		{
 			swap_nodes(&stack_a, 'a');
 			rotate(&stack_a, 'a');
 		}
-
-		//si max au milieu et min a la fin : rra
-		
+		if (stack_a->next->value == max->value && stack_a->next->next->value == min->value)
+			reverse_rotate(&stack_a, 'a');
 	}
 }
 
@@ -122,8 +94,6 @@ int	is_sorted(t_list *stack_a)
 		if (stack_a->value > stack_a->next->value)
 		{
 			printf("ce n'est pas triee\n");
-			sort_2(stack_a);
-			sort_3(stack_a);
 			return (1);
 		}
 		stack_a = stack_a->next;

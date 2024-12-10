@@ -6,18 +6,19 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:13:35 by nolecler          #+#    #+#             */
-/*   Updated: 2024/11/30 09:48:30 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/10 13:04:38 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int    swap_nodes(t_list **stack, char x)
+void    swap_nodes(t_list **stack, char x)
 {
     t_list    *tmp_node;
 
     if (ft_lstsize(*stack) < 2)
-        return (-1);
+        //return (-1);
+        return ;
     // Swapper les deux premiers éléments
     tmp_node = (*stack)->next;
     (*stack)->next = tmp_node->next;
@@ -27,21 +28,22 @@ int    swap_nodes(t_list **stack, char x)
         write(1, "sa\n", 3);
     else if (x == 'b')
         write(1, "sb\n", 3);
-    return (0);
+    //return (0);
 }
 
-int    swap_nodes_only(t_list **stack)
+void    swap_nodes_only(t_list **stack)
 {
     t_list    *tmp_node;
 
     if (ft_lstsize(*stack) < 2)
-        return (-1);
+        //return (-1);
+        return ;
     // Swapper les deux premiers éléments
     tmp_node = (*stack)->next;
     (*stack)->next = tmp_node->next;
     tmp_node->next = *stack;
     *stack = tmp_node;
-    return (0);
+    //return (0);
 }
 
 void    swap_a_and_b(t_list **stack_a, t_list **stack_b)

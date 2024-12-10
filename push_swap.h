@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:12:35 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/06 09:54:52 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/10 13:05:12 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,8 +42,8 @@ void	push_to_a(t_list **stack_a, t_list **stack_b);
 void	push_to_b(t_list **stack_a, t_list **stack_b);
 
 /* Swap */
-int    swap_nodes(t_list **stack, char x);
-int    swap_nodes_only(t_list **stack);
+void    swap_nodes(t_list **stack, char x);
+void    swap_nodes_only(t_list **stack);
 void    swap_a_and_b(t_list **stack_a, t_list **stack_b);
 
 /* Rotate */
