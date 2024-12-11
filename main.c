@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:35:20 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/10 16:14:45 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/11 12:24:07 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,18 +17,19 @@
 // Si il y a que deux chiffres fais une fonction qui fais un trie par deux (swap)  ✅ 
 // creer une fonction qui fait un tri de 3 nombres ✅
 // creer une fonction qui determine qui est le plus grand des nodes  ✅ 
+// creer une fonction qui fait le tri de 5 ✅
 // gerer le 0 envoyee en argument ❌
 
 #include <stdio.h>
 
-
-void	sort_2(t_list *stack_a)
+void	sort_two(t_list *stack_a)
 {
 	int	i;
 	
 	i = ft_lstsize(stack_a);
 	if (i == 2)
 		swap_nodes(&stack_a, 'a');
+	//return ;
 }
 
 static	t_list    *find_max(t_list *stack_a)
@@ -57,7 +58,7 @@ static	t_list    *find_min(t_list *stack_a)
 	return (min);
 }
 
-void	sort_3(t_list *stack_a)
+void	sort_three(t_list *stack_a)
 {
 	t_list	*min;
 	t_list	*max;
@@ -82,24 +83,28 @@ void	sort_3(t_list *stack_a)
 		}
 		else if (stack_a->next->value == max->value && stack_a->next->next->value == min->value)
 			reverse_rotate(&stack_a, 'a');
-	}
-	
+	}	
 }
-// creer une fonction qui fait un tri de 5 nombres ❌
 
-// Tri de 5 : trouver les 2 pplus petits, les push dans b, tri de 3 de stack_a, ❌
-			//si le 1er chiffre dans stack_b est plus grand que le 2eme , pa 2fois sinon sb et pa 2fois ❌
-
-void	sort_5(t_list *stack_a, t_list *stack_b)
+void	sort_five(t_list *stack_a, t_list *stack_b)
 {
+	int	count_b;
+	t_list *min;
 	
-
-
-
-
-
-
-
+	count_b = 0;
+	while(count_b < 2)
+	{
+		min = find_min(stack_a);
+		while (min != stack_a) // tant que min n'est pas au debut de la liste
+		{
+			rotate(&stack_a, 'a');
+		}
+		push_to_b(&stack_a, &stack_b); 
+		count_b++;
+	}
+	sort_three(stack_a);
+	push_to_a(&stack_a, &stack_b);
+	push_to_a(&stack_a, &stack_b);
 }
 
 // = 1 veut dire que ce n'est pas triee -> Donc creer une fonction qui va trier = ALGORITHME ❌
@@ -125,12 +130,11 @@ int	is_sorted(t_list *stack_a)
 int	main(int argc, char **argv)
 {
 	int	i;
-
-	i = 1;
 	char **cut_argv;
 	t_list *stack_a;
 	t_list *stack_b;
-
+	
+	i = 1;
 	stack_a = NULL;
 	stack_b = NULL;
 	cut_argv = NULL;
@@ -148,11 +152,9 @@ int	main(int argc, char **argv)
 	check_double(&stack_a);
 	if (is_sorted(stack_a) == 1)
 	{
-		//si stack_a = 2 nombres
-		sort_2(stack_a);
-		//si stack_a = 
-		sort_3(stack_a);
-		//sort_5(stack_a, stack_b);
+		//sort_two(stack_a);
+		//sort_three(stack_a);
+		sort_five(stack_a, stack_b); //cas d 3 1 2 -1 4 ne fonctionne pas
 	}
 }
 

@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:12:44 by nolecler          #+#    #+#             */
-/*   Updated: 2024/11/30 08:12:50 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/11 10:09:09 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,6 @@ void	push_to_a(t_list **stack_a, t_list **stack_b)
 	*stack_b = (*stack_b)->next;
 	ft_lstadd_front(stack_a, tmp);
 	write(1, "pa\n", 3);
-
 }
 
 void	push_to_b(t_list **stack_a, t_list **stack_b)
