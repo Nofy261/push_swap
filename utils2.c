@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 09:10:03 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/06 10:19:18 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:32:16 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,14 +22,12 @@ int	ft_atoi(char *str)
 	i = 0;
 	sign = 1;
 	stock = 0;
-	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))//enlever la tabulation??
+	while (str[i] == 32 || (str[i] >= 9 && str[i] <= 13))
 		i++;
 	while (str[i] == '-' || str[i] == '+')
 	{
-		if (str[i + 1] == '-')
-			return (0);
-		if (str[i + 1] == '+')
-			return (0);
+		if (str[i + 1] == '-' || str[i + 1] == '+')
+			return (0); // (reglee avec la suppression de check_error)
 		if (str[i] == '-')
 			sign = sign * -1;
 		i++;
