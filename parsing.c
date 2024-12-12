@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 09:21:12 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/11 16:52:27 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/12 13:22:24 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,14 +47,14 @@ int	check_sign(char **argv) // on regarde si apres le - ou + c'est bien un chiff
 }
 
 // Cette fonction ne semble pas etre utile, sa suppression regle le probleme de 0 entree en argument
-void	check_errors(char *str) //cas ++++++667778764
-{	
-	if (ft_atoi(str) == 0) // si atoi retourne 0;
-	{
-		write (2, "Error\n", 6);
-		exit (EXIT_FAILURE); // on arrete le programme;
-	}
-}
+// void	check_errors(char *str) //cas ++++++667778764
+// {	
+// 	if (ft_atoi(str) == 0) // si atoi retourne 0;
+// 	{
+// 		write (2, "Error\n", 6);
+// 		exit (EXIT_FAILURE); // on arrete le programme;
+// 	}
+// }
 
 void	parse_arguments(t_list **stack_a, char **big_argv)// on met les nodes qui sont donnes en argument dans la stack_a
 {
@@ -65,10 +65,10 @@ void	parse_arguments(t_list **stack_a, char **big_argv)// on met les nodes qui s
 	j = 0;
 	while (big_argv[j])
 	{
-		//check_errors(big_argv[j]);
+		//check_errors(big_argv[j]); //== check_sign
 		value = ft_atoi(big_argv[j]);
 		newnode = ft_lstnew(value);
-		ft_lstadd_back(stack_a, newnode);
+		ft_lstadd_back(stack_a, newnode);//pourquoi rajouter a la fin et non au debut??
 		j++; 
 	}
 }

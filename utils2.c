@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 09:10:03 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/11 16:32:16 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:56:55 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,6 +46,7 @@ int	ft_isdigit(int c)
 		return (1);
 	return (0);
 }
+
 void	ft_putstr_fd(char	*s, int fd)
 {
 	int	i;

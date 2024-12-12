@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:13:44 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/06 09:10:12 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/11 16:57:02 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ int	ft_lstsize(t_list *lst)
 	}
 	return (count);
 }
+
 t_list	*ft_lstnew(int value)
 {
 	t_list	*newnode;
