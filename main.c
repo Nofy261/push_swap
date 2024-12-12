@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:35:20 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/12 16:01:46 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/12 17:01:36 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@
 // gerer le 0 envoyee en argument --> a revoir ou enlever la fonction check_error : SOLUTION testee OK ✅
 // fonction swap modifiee : void au lieu de return int a la base ✅
 // -g rajouter dans makefile pour gdb a enlever a la fin
+// gerer l'overflow du long int 
 #include <stdio.h>
 
 static	t_list    *find_max(t_list *stack_a)
@@ -49,13 +50,13 @@ static	t_list    *find_min(t_list *stack_a)
 	return (min);
 }
 
-void	sort_two(t_list *stack_a)
+void	sort_two(t_list **stack_a)
 {
 	int	i;
 	
-	i = ft_lstsize(stack_a);
+	i = ft_lstsize(*stack_a);
 	if (i == 2)
-		swap_nodes(&stack_a, 'a');
+		swap_nodes(stack_a, 'a');
 }
 
 void	sort_three(t_list **stack_a)
@@ -86,7 +87,7 @@ void	sort_three(t_list **stack_a)
 	}	
 }
 
-void	sort_five(t_list *stack_a, t_list *stack_b)
+void	sort_five(t_list **stack_a, t_list **stack_b)
 {
 	int	count_b;
 	t_list *min;
@@ -94,17 +95,17 @@ void	sort_five(t_list *stack_a, t_list *stack_b)
 	count_b = 0;
 	while(count_b < 2)
 	{
-		min = find_min(stack_a);
-		while (min != stack_a) // tant que min n'est pas au debut de la liste
+		min = find_min(*stack_a);
+		while (min != *stack_a) // tant que min n'est pas au debut de la liste
 		{
-			rotate(&stack_a, 'a');
+			rotate(stack_a, 'a');
 		}
-		push_to_b(&stack_a, &stack_b); 
+		push_to_b(stack_a, stack_b);
 		count_b++;
 	}
-	sort_three(&stack_a);
-	push_to_a(&stack_a, &stack_b);
-	push_to_a(&stack_a, &stack_b);
+	sort_three(stack_a);
+	push_to_a(stack_a, stack_b);
+	push_to_a(stack_a, stack_b);
 }
 
 
@@ -165,11 +166,11 @@ int	main(int argc, char **argv)
 	if (is_sorted_or_not(stack_a) == 1)
 	{
 		if (ft_lstsize(stack_a) == 2)//ou plutot le nombre d'argument entree en parametre??
-			sort_two(stack_a);
+			sort_two(&stack_a);
 		else if (ft_lstsize(stack_a) == 3)
 			sort_three(&stack_a);
 		else if (ft_lstsize(stack_a) == 5)
-			sort_five(stack_a, stack_b);
+			sort_five(&stack_a, &stack_b);
 	}
 	printf("Liste A:\n");
 	while (stack_a)
