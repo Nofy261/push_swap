@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 13:45:39 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/14 16:59:51 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/14 18:19:35 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ static t_list    *find_min(t_list *stack_a)
 {
 	t_list *min = stack_a; //les deux pointent vers un meme maillon
 	
-	while (min->rank != -1)
+	
+	while (min->rank != -1 && min->next != NULL) //rajout
 		min = min->next;
 	
 	while(stack_a)
