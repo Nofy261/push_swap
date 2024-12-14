@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:35:20 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/14 14:04:27 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/14 14:39:28 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@
 // regler le dernier nombre qui reste dans b a la fin ❌
 // radix ne gere pas les negatifs
 // verifier qui doit etre static ou pas ❌
-// printf a enlever dans la fonction int is_sorted_or_not
+// printf a enlever dans la fonction int is_sorted_or_not ❌
 
 #include <stdio.h>
 

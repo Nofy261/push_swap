@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:13:44 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/11 16:57:02 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/14 14:55:42 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -72,6 +72,6 @@ t_list	*ft_lstnew(int value)
 		return (NULL);
 	newnode->value = value;
 	newnode->next = NULL;
+	newnode->rank = -1;
 	return (newnode);
 }
-

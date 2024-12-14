@@ -6,7 +6,7 @@
 #    By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/30 08:12:18 by nolecler          #+#    #+#              #
-#    Updated: 2024/12/14 14:05:59 by nolecler         ###   ########.fr        #
+#    Updated: 2024/12/14 14:18:05 by nolecler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -14,7 +14,7 @@ NAME = push_swap
 
 CC = cc
 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra -g
 
 FSRCS = push.c \
 		reverse_rotate.c \

@@ -6,25 +6,11 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 13:45:39 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/14 13:54:15 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/14 16:59:51 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void    set_rank(t_list **stack_a)
-{
-    int            i;
-    int            len;
-
-    i = 0;
-    len = ft_lstsize(*stack_a);
-    while (i < len)
-    {
-        find_min(*stack_a)->rank = i;
-        i++;
-    }
-}
 
 static t_list    *find_max(t_list *stack_a)
 {
@@ -43,13 +29,30 @@ static t_list    *find_min(t_list *stack_a)
 {
 	t_list *min = stack_a; //les deux pointent vers un meme maillon
 	
+	while (min->rank != -1)
+		min = min->next;
+	
 	while(stack_a)
 	{
-		if(stack_a->value < min->value)
+		if(stack_a->value < min->value && stack_a->rank == -1)
 			min = stack_a;
 		stack_a = stack_a->next;
 	}
 	return (min);
+}
+
+void    set_rank(t_list **stack_a)
+{
+    int            i;
+    int            len;
+
+    i = 0;
+    len = ft_lstsize(*stack_a);
+    while (i < len)
+    {
+		find_min(*stack_a)->rank = i;
+        i++;
+    }
 }
 
 void	sort_three(t_list **stack_a)
