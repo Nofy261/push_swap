@@ -6,165 +6,22 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:35:20 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/13 16:00:18 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/14 14:04:27 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
 // gerer int min et int max ❌ 
-// fonction pour voir si il est deja trier  int	is_sorted_or_not(t_list *stack)  ✅ 
-// Si il y a que deux chiffres fais une fonction qui fais un trie par deux (swap)  ✅ 
-// creer une fonction qui fait un tri de 3 nombres ✅
-// creer une fonction qui determine qui est le plus grand des nodes  ✅ 
-// creer une fonction qui fait le tri de 5 ✅
 // gerer le 0 envoyee en argument --> a revoir ou enlever la fonction check_error : SOLUTION testee OK ✅
 // fonction swap modifiee : void au lieu de return int a la base ✅
 // gerer l'overflow du long int ❌ 
 // regler le dernier nombre qui reste dans b a la fin ❌
 // radix ne gere pas les negatifs
+// verifier qui doit etre static ou pas ❌
+// printf a enlever dans la fonction int is_sorted_or_not
 
 #include <stdio.h>
-
-static	t_list    *find_max(t_list *stack_a)
-{
-	t_list *max = stack_a;
-	
-	while(stack_a)
-	{
-		if(stack_a->value > max->value)
-			max = stack_a;
-		stack_a = stack_a->next;
-	}
-	return (max);
-}
-
-static	t_list    *find_min(t_list *stack_a)
-{
-	t_list *min = stack_a; //les deux pointent vers un meme maillon
-	
-	while(stack_a)
-	{
-		if(stack_a->value < min->value)
-			min = stack_a;
-		stack_a = stack_a->next;
-	}
-	return (min);
-}
-
-void	sort_two(t_list **stack_a)
-{
-	int	i;
-	
-	i = ft_lstsize(*stack_a);
-	if (i == 2)
-		swap_nodes(stack_a, 'a');
-}
-
-void	sort_three(t_list **stack_a)
-{
-	t_list	*min;
-	t_list	*max;
-
-	min = find_min(*stack_a);
-	max = find_max(*stack_a);
-	if (ft_lstsize(*stack_a) == 3)
-	{
-		if ((*stack_a)->next->value == min->value && (*stack_a)->next->next->value == max->value)
-			swap_nodes(stack_a, 'a');
-		else if ((*stack_a)->value == max->value && (*stack_a)->next->next->value == min->value)
-		{
-			swap_nodes(stack_a, 'a');
-			reverse_rotate(stack_a, 'a');
-		}
-		else if ((*stack_a)->value == max->value && (*stack_a)->next->value == min->value)
-			rotate(stack_a, 'a');
-		else if ((*stack_a)->value == min->value && (*stack_a)->next->value == max->value)
-		{
-			swap_nodes(stack_a, 'a');
-			rotate(stack_a, 'a');
-		}
-		else if ((*stack_a)->next->value == max->value && (*stack_a)->next->next->value == min->value)
-			reverse_rotate(stack_a, 'a');
-	}	
-}
-
-void	sort_five(t_list **stack_a, t_list **stack_b)
-{
-	int	count_b;
-	t_list *min;
-	
-	count_b = 0;
-	while(count_b < 2)
-	{
-		min = find_min(*stack_a);
-		while (min != *stack_a) // tant que min n'est pas au debut de la liste
-		{
-			rotate(stack_a, 'a');
-		}
-		push_to_b(stack_a, stack_b);
-		count_b++;
-	}
-	sort_three(stack_a);
-	push_to_a(stack_a, stack_b);
-	push_to_a(stack_a, stack_b);
-}
-
-
-void    radix_sort(t_list **stack_a, t_list **stack_b)
-{
-	//rank indique la position de chaque nombre, rank[0] correspond au plus petit chiffre
-    int            i;//index pour les bits de rank Ex: rank0 = 8 = 1000 en binaire et i[0] sera au 0 le plus a droite de 1000, et i[3] = 1
-    int            len;
-
-    i = 0;
-    while (is_sorted_or_not((*stack_a)) == 0)// tant que la stack_a n'est pas triee
-    {
-        len = ft_lstsize((*stack_a));
-        while (len-- && is_sorted_or_not((*stack_a)) == 0)
-        {
-			// si bit = 1, la condition est vrai
-            if ((((*stack_a)->rank >> i) & 1))//c'est une operation qui donne 1 ou 0 et si l operation donne 1 cad si bit = 1 ,on rotate a sinon push_to_b
-            //ex:rank=2 et i=1(on verifie le 2em bit a droite); ((2 >> 1) & 1) = (0010 >> 1) & 1 = 1; car decalage d'un bit vers la droite de 0010 = 0001 et 0001 & 0001 = 1;
-			    rotate(stack_a, 'a');
-            else
-                push_to_b(stack_a, stack_b);//on met le 1 dans b
-        }
-        len = ft_lstsize((*stack_b));
-        while (len--)
-            push_to_a(stack_a, stack_b);
-        i++;
-    }
-}
-
-int	is_sorted_or_not(t_list *stack_a)
-{
-	while (stack_a->next != NULL)
-	{		
-		if (stack_a->value > stack_a->next->value)
-		{
-			//printf("ce n'est pas triee\n");
-			return (1);
-		}
-		stack_a = stack_a->next;
-	}
-	//printf("c'est deja triee");
-	return (0);	
-}
-// void	sort(t_list **stack_a, t_list **stack_b)
-// {
-// 	if (is_sorted_or_not(*stack_a) == 1) // si ce n est pas triee je trie 
-// 	{
-// 		if (ft_lstsize(stack_a) == 2)//ou plutot le nombre d'argument entree en parametre??
-// 			sort_two(stack_a);
-// 		else if (ft_lstsize(stack_a) == 3)
-// 			sort_three(stack_a);
-// 		else if (ft_lstsize(stack_a) == 5)
-// 			sort_five(stack_a, stack_b);
-// 		//else
-// 		//rajouter ici radix
-// 	}
-// }
 
 int	main(int argc, char **argv)
 {
@@ -189,16 +46,18 @@ int	main(int argc, char **argv)
 		parse_arguments(&stack_a, cut_argv);	
 		i++;
 	}
-	
 	check_double(&stack_a);
+	set_rank(&stack_a);
 	if (is_sorted_or_not(stack_a) == 1)
 	{
-		if (ft_lstsize(stack_a) == 2)//ou plutot le nombre d'argument entree en parametre??
+		if (ft_lstsize(stack_a) == 2)
 			sort_two(&stack_a);
 		else if (ft_lstsize(stack_a) == 3)
 			sort_three(&stack_a);
 		else if (ft_lstsize(stack_a) == 5)
 			sort_five(&stack_a, &stack_b);
+		else
+			radix_sort(&stack_a, &stack_b);
 	}
 	printf("Liste A:\n");
 	while (stack_a)

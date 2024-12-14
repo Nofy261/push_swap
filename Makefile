@@ -6,7 +6,7 @@
 #    By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/11/30 08:12:18 by nolecler          #+#    #+#              #
-#    Updated: 2024/12/12 16:03:15 by nolecler         ###   ########.fr        #
+#    Updated: 2024/12/14 14:05:59 by nolecler         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,8 @@ FSRCS = push.c \
 		main.c \
 		parsing.c \
 		split.c \
+		sort.c \
+		sort_bis.c \
 		# main_of_test.c
 		
 

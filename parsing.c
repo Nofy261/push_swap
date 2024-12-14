@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 09:21:12 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/12 13:22:24 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/14 13:57:42 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ int verif_argc(int argc) //s'il y a juste un argument
 		return (1);
 	return (0);
 }
+
 
 int	check_sign(char **argv) // on regarde si apres le - ou + c'est bien un chiffre 
 {
@@ -72,6 +73,7 @@ void	parse_arguments(t_list **stack_a, char **big_argv)// on met les nodes qui s
 		j++; 
 	}
 }
+
 
 int	check_double(t_list **stack_a) //test ok
 {
