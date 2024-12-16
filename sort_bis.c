@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 13:51:04 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/16 13:30:02 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/16 16:52:51 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,12 +51,12 @@ void radix_sort(t_list **stack_a, t_list **stack_b)
             if ((((*stack_a)->rank >> i) & 1))
                 rotate(stack_a, 'a');
             else
-                push_to_b(stack_a, stack_b);
+                push(stack_b, stack_a, 'b');
         }
         len = ft_lstsize(*stack_b);
         while (len--)
         {
-            push_to_a(stack_a, stack_b);
+            push(stack_a, stack_b, 'a');
         }
         i++;
     }

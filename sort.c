@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 13:45:39 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/16 16:33:19 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/16 17:17:07 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,11 +42,38 @@ void    set_rank(t_list **stack_a)
     }
 }
 
+// a etudier !important
+
+static void	ft_normalisation(t_list *a)
+{
+	t_list	*save;
+	t_list	*current;
+	int		count;
+
+	count = 0;
+	save = a;
+	current = a;
+	while (save)
+	{
+		count = 0;
+		while (current)
+		{
+			if (save->value > current->value)
+				count++;
+			current = current->next;
+		}
+		save->rank = count;
+		save = save->next;
+		current = a;
+	}
+}
+
 void	sort_three(t_list **stack_a)
 {
 	t_list	*current;
 
 	current = *stack_a;
+    ft_normalisation(*stack_a);
 	if (current->rank == 1 && current->next->rank == 0)
 		swap_nodes(stack_a, 'a');
 	else if (current->rank == 2 && current->next->rank == 1)
@@ -65,8 +92,6 @@ void	sort_three(t_list **stack_a)
 		reverse_rotate(stack_a, 'a');
 }
 
-#include <stdio.h>
-
 void    sort_five(t_list **stack_a, t_list **stack_b)
 {
     int i;
@@ -78,7 +103,7 @@ void    sort_five(t_list **stack_a, t_list **stack_b)
     {
         if ((*stack_a)->rank == 0 || (*stack_a)->rank == 1)//on met dans b les 2 plus petits
         {
-            push_to_b(stack_a, stack_b);
+            push(stack_b, stack_a, 'b');
             i--;
         }
         else
@@ -90,7 +115,7 @@ void    sort_five(t_list **stack_a, t_list **stack_b)
     {
         swap_nodes(stack_b, 'b');
     }
-    push_to_a(stack_a, stack_b);
-    push_to_a(stack_a, stack_b);
+    push(stack_a, stack_b, 'a');
+    push(stack_a, stack_b, 'a');
 }
 

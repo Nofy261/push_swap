@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:12:35 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/14 14:01:49 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/16 16:54:08 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,11 @@ typedef struct s_list
 }					t_list;
 
 
+// test 
+void	push(t_list **stack_dst, t_list **stack_src, char c);
+
+
+
 /*  Utils */
 void	ft_lstadd_front(t_list **lst, t_list *new);
 t_list	*ft_lstlast(t_list *lst);
@@ -39,8 +44,8 @@ void	ft_putstr_fd(char	*s, int fd);
 int	ft_isdigit(int c);
 
 /* Push */
-void	push_to_a(t_list **stack_a, t_list **stack_b);
-void	push_to_b(t_list **stack_a, t_list **stack_b);
+// void	push_to_a(t_list **stack_a, t_list **stack_b);
+// void	push_to_b(t_list **stack_a, t_list **stack_b);
 
 /* Swap */
 void    swap_nodes(t_list **stack, char x);
