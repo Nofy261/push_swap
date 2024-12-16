@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 13:45:39 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/16 15:22:31 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/16 16:33:19 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,6 +65,7 @@ void	sort_three(t_list **stack_a)
 		reverse_rotate(stack_a, 'a');
 }
 
+#include <stdio.h>
 
 void    sort_five(t_list **stack_a, t_list **stack_b)
 {
@@ -77,11 +78,11 @@ void    sort_five(t_list **stack_a, t_list **stack_b)
     {
         if ((*stack_a)->rank == 0 || (*stack_a)->rank == 1)//on met dans b les 2 plus petits
         {
-            push_to_b(stack_b, stack_a);
+            push_to_b(stack_a, stack_b);
             i--;
         }
         else
-            rotate(stack_a, 'a');
+           rotate(stack_a, 'a');
     }
     sort_three(stack_a);
     if (*stack_b && (*stack_b)->next
