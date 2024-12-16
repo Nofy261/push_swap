@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils2.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: teddybandama <teddybandama@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 09:10:03 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/11 16:56:55 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/15 19:06:18 by teddybandam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@ int	ft_atoi(char *str)
 {
 	int	i;
 	int	sign;
-	int	stock;
+	long	stock;
 
 	i = 0;
 	sign = 1;
@@ -27,7 +27,10 @@ int	ft_atoi(char *str)
 	while (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i + 1] == '-' || str[i + 1] == '+')
-			return (0); // (reglee avec la suppression de check_error)
+		{
+			write (2, "Error\n", 6);
+			exit(EXIT_FAILURE);
+		}
 		if (str[i] == '-')
 			sign = sign * -1;
 		i++;
@@ -37,7 +40,19 @@ int	ft_atoi(char *str)
 		stock = stock * 10 + (str[i] - '0');
 		i++;
 	}
-	return (stock * sign);	
+	stock *= sign;
+	if (!(stock > -2147483649 && stock < 2147483648))
+	{
+		write (2, "Error\n", 6);
+		exit(EXIT_FAILURE);
+		
+	}
+	if (str[i] != '\0')
+	{
+		write (2, "Error\n", 6);
+		exit(EXIT_FAILURE);
+	}
+	return (stock);	
 }
 
 int	ft_isdigit(int c)

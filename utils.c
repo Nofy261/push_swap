@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   utils.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tebandam <tebandam@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:13:44 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/14 14:55:42 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/14 19:33:36 by tebandam         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,6 +18,7 @@ void	ft_lstadd_front(t_list **lst, t_list *new)
 	if (*lst == NULL)
 	{
 		*lst = new;
+		new->next = NULL;
 		return ;
 	}
 	new->next = *lst;
@@ -31,6 +32,7 @@ void	ft_lstadd_back(t_list **lst, t_list *new)
 	if (*lst == NULL)
 	{
 		*lst = new;
+		new->next = NULL;
 		return ;
 	}
 	tmp = *lst;
@@ -57,8 +59,8 @@ int	ft_lstsize(t_list *lst)
 	count = 0;
 	while (lst)
 	{
-		lst = lst->next;
 		count++;
+		lst = lst->next;
 	}
 	return (count);
 }

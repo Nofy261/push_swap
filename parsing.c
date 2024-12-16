@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
+/*   By: teddybandama <teddybandama@student.42.f    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 09:21:12 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/14 13:57:42 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/15 19:19:52 by teddybandam      ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,16 +47,6 @@ int	check_sign(char **argv) // on regarde si apres le - ou + c'est bien un chiff
 	return(0);
 }
 
-// Cette fonction ne semble pas etre utile, sa suppression regle le probleme de 0 entree en argument
-// void	check_errors(char *str) //cas ++++++667778764
-// {	
-// 	if (ft_atoi(str) == 0) // si atoi retourne 0;
-// 	{
-// 		write (2, "Error\n", 6);
-// 		exit (EXIT_FAILURE); // on arrete le programme;
-// 	}
-// }
-
 void	parse_arguments(t_list **stack_a, char **big_argv)// on met les nodes qui sont donnes en argument dans la stack_a
 {
 	t_list *newnode;
@@ -66,7 +56,6 @@ void	parse_arguments(t_list **stack_a, char **big_argv)// on met les nodes qui s
 	j = 0;
 	while (big_argv[j])
 	{
-		//check_errors(big_argv[j]); //== check_sign
 		value = ft_atoi(big_argv[j]);
 		newnode = ft_lstnew(value);
 		ft_lstadd_back(stack_a, newnode);//pourquoi rajouter a la fin et non au debut??
