@@ -6,11 +6,29 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:35:20 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/17 16:13:42 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/17 16:40:41 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	check_sort(t_list *stack_a)
+{
+	t_list	*stack_b;
+
+	stack_b = NULL;
+	if (!is_sorted_or_not(stack_a))
+	{
+		if (ft_lstsize(stack_a) == 2)
+			sort_two(&stack_a);
+		else if (ft_lstsize(stack_a) == 3)
+			sort_three(&stack_a);
+		else if (ft_lstsize(stack_a) == 5)
+			sort_five(&stack_a, &stack_b);
+		else
+			radix_sort(&stack_a, &stack_b);
+	}
+}
 
 int	main(int argc, char **argv)
 {
@@ -36,17 +54,7 @@ int	main(int argc, char **argv)
 	}
 	check_double(&stack_a);
 	set_rank(&stack_a);
-	if (!is_sorted_or_not(stack_a))
-	{
-		if (ft_lstsize(stack_a) == 2)
-			sort_two(&stack_a);
-		else if (ft_lstsize(stack_a) == 3)
-			sort_three(&stack_a);
-		else if (ft_lstsize(stack_a) == 5)
-			sort_five(&stack_a, &stack_b);
-		else
-			radix_sort(&stack_a, &stack_b);
-	}
+	check_sort(stack_a);
 	free_all(cut_argv);
 	free_list(stack_a);
 }
