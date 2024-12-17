@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 09:21:12 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/17 14:27:41 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/17 17:01:54 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void	parse_arguments(t_list **stack_a, char **big_argv)
 	j = 0;
 	while (big_argv[j])
 	{
-		value = ft_atoi(big_argv[j]);
+		value = ft_atoi(big_argv[j], *stack_a, big_argv);
 		newnode = ft_lstnew(value);
 		ft_lstadd_back(stack_a, newnode);
 		j++;

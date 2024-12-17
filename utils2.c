@@ -6,19 +6,21 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 09:10:03 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/17 16:09:33 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/17 17:03:13 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_error(void)
+void	print_error(char **cut_argv, t_list *stack_a)
 {
 	write (2, "Error\n", 6);
+	free_all(cut_argv);
+	free_list(stack_a);
 	exit(EXIT_FAILURE);
 }
 
-int	ft_atoi(char *str)
+int	ft_atoi(char *str, t_list *stack_a, char **cut_argv)
 {
 	int		i;
 	int		sign;
@@ -32,7 +34,7 @@ int	ft_atoi(char *str)
 	while (str[i] == '-' || str[i] == '+')
 	{
 		if (str[i + 1] == '-' || str[i + 1] == '+')
-			print_error();
+			print_error(cut_argv, stack_a);
 		if (str[i] == '-')
 			sign = sign * -1;
 		i++;
@@ -41,7 +43,7 @@ int	ft_atoi(char *str)
 		stock = stock * 10 + (str[i++] - '0');
 	stock *= sign;
 	if (!(stock > -2147483649 && stock < 2147483648) || str[i] != '\0')
-		print_error();
+		print_error(cut_argv, stack_a);
 	return (stock);
 }
 
