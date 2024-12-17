@@ -6,11 +6,11 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:05:28 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/17 14:40:26 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/17 19:27:43 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include <stdlib.h>
+#include "push_swap.h"
 
 static size_t	count_words(const char *s, char c)
 {

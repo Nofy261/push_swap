@@ -6,21 +6,21 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 09:10:03 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/17 17:03:13 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/17 18:07:32 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	print_error(char **cut_argv, t_list *stack_a)
+void	print_error(char **cut_argv, t_list **stack_a)
 {
 	write (2, "Error\n", 6);
 	free_all(cut_argv);
-	free_list(stack_a);
+	free_list(*stack_a);
 	exit(EXIT_FAILURE);
 }
 
-int	ft_atoi(char *str, t_list *stack_a, char **cut_argv)
+int	ft_atoi(char *str, t_list **stack_a, char **cut_argv)
 {
 	int		i;
 	int		sign;

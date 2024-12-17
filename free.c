@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 16:12:08 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/17 16:13:29 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/17 19:24:36 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,4 +36,11 @@ void	*free_all(char **str)
 	}
 	free(str);
 	return (NULL);
+}
+
+void	free_end(t_list **stack_a, t_list **stack_b, char **cut_argv)
+{
+	free_all(cut_argv);
+	free_list(*stack_a);
+	free_list(*stack_b);
 }

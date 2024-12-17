@@ -6,29 +6,11 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:35:20 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/17 16:44:06 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/17 19:23:08 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-void	check_sort(t_list *stack_a)
-{
-	t_list	*stack_b;
-
-	stack_b = NULL;
-	if (!is_sorted_or_not(stack_a))
-	{
-		if (ft_lstsize(stack_a) == 2)
-			sort_two(&stack_a);
-		else if (ft_lstsize(stack_a) == 3)
-			sort_three(&stack_a);
-		else if (ft_lstsize(stack_a) == 5)
-			sort_five(&stack_a, &stack_b);
-		else
-			radix_sort(&stack_a, &stack_b);
-	}
-}
 
 int	main(int argc, char **argv)
 {
@@ -37,24 +19,24 @@ int	main(int argc, char **argv)
 	t_list	*stack_a;
 	t_list	*stack_b;
 
-	i = 1;
+	i = 0;
 	stack_a = NULL;
 	stack_b = NULL;
 	cut_argv = NULL;
-	if (verif_argc(argc) == 1 || check_sign(argv) == 1)
+	if (argc == 1)
+		return (1);
+	if (check_sign(argv) == 1)
 	{
 		ft_putstr_fd("Error\n", 2);
-		exit(EXIT_FAILURE);
+		return (1);
 	}
-	while (i < argc)
+	while (++i < argc)
 	{
 		cut_argv = ft_split(argv[i], ' ');
 		parse_arguments(&stack_a, cut_argv);
-		i++;
 	}
-	check_double(&stack_a);
+	check_double(stack_a, cut_argv);
 	set_rank(&stack_a);
-	check_sort(stack_a);
-	free_all(cut_argv);
-	free_list(stack_a);
+	check_sort(&stack_a, &stack_b);
+	free_end(&stack_a, &stack_b, cut_argv);
 }

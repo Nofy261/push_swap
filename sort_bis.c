@@ -6,11 +6,26 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 13:51:04 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/17 14:39:20 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/17 19:23:47 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
+
+void	check_sort(t_list **stack_a, t_list **stack_b)
+{
+	if (!is_sorted_or_not(*stack_a))
+	{
+		if (ft_lstsize(*stack_a) == 2)
+			sort_two(stack_a);
+		else if (ft_lstsize(*stack_a) == 3)
+			sort_three(stack_a);
+		else if (ft_lstsize(*stack_a) == 5)
+			sort_five(stack_a, stack_b);
+		else
+			radix_sort(stack_a, stack_b);
+	}
+}
 
 int	is_sorted_or_not(t_list *stack_a)
 {
