@@ -6,10 +6,9 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:13:24 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/17 12:44:16 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/17 14:37:40 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-
 
 #include "push_swap.h"
 
@@ -57,4 +56,3 @@ void	rotate_a_and_b(t_list **stack_a, t_list **stack_b)
 	rotate_only(stack_b);
 	write(1, "rr\n", 3);
 }
-

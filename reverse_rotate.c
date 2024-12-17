@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:13:13 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/17 12:37:46 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/17 13:38:29 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,18 @@
 
 void	reverse_rotate(t_list **stack, char x)
 {
-	t_list *last;
-	t_list *second_last;
+	t_list	*last;
+	t_list	*second_last;
 
 	if (ft_lstsize(*stack) <= 1)
 		return ;
 	last = ft_lstlast(*stack);
 	second_last = *stack;
-	
 	while (second_last->next != last)
 	{
-		second_last = second_last->next;	
+		second_last = second_last->next;
 	}
-
 	second_last->next = NULL;
-	
 	last->next = *stack;
 	*stack = last;
 	if (x == 'a')
@@ -37,24 +34,20 @@ void	reverse_rotate(t_list **stack, char x)
 		write(1, "rrb\n", 4);
 }
 
-
-void   reverse_rotate_only(t_list **stack)
+void	reverse_rotate_only(t_list **stack)
 {
-	t_list *last;
-	t_list *second_last;
+	t_list	*last;
+	t_list	*second_last;
 
 	if (ft_lstsize(*stack) <= 1)
 		return ;
 	last = ft_lstlast(*stack);
 	second_last = *stack;
-	
 	while (second_last->next != last)
 	{
-		second_last = second_last->next;	
+		second_last = second_last->next;
 	}
-
 	second_last->next = NULL;
-	
 	last->next = *stack;
 	*stack = last;
 }

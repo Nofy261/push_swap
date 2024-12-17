@@ -6,43 +6,43 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 13:45:39 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/17 13:04:40 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/17 14:32:34 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-t_list *find_min(t_list *stack_a)
+t_list	*find_min(t_list *stack_a)
 {
-    t_list *min = stack_a; //les deux pointent vers un meme maillon NORMINETTE
+	t_list	*min;
 
-    while (min->next && min->rank != -1)
-        min = min->next;
-    
-    while(stack_a)
-    {
-        if(stack_a->value < min->value && stack_a->rank == -1)
-            min = stack_a;
-        stack_a = stack_a->next;
-    }
-    return (min);
+	min = stack_a;
+	while (min->next && min->rank != -1)
+		min = min->next;
+	while (stack_a)
+	{
+		if (stack_a->value < min->value && stack_a->rank == -1)
+			min = stack_a;
+		stack_a = stack_a->next;
+	}
+	return (min);
 }
 
-void    set_rank(t_list **stack_a)
+void	set_rank(t_list **stack_a)
 {
-    int            count;
-    int            len;
+	int	count;
+	int	len;
 
-    count = 0;
-    len = ft_lstsize(*stack_a);
-    while (count < len)
-    {
+	count = 0;
+	len = ft_lstsize(*stack_a);
+	while (count < len)
+	{
 		find_min(*stack_a)->rank = count;
-        count++;
-    }
+		count++;
+	}
 }
 
-void	ft_normalisation(t_list *stack_a)
+void	normalisation(t_list *stack_a)
 {
 	t_list	*save;
 	t_list	*current;
@@ -71,7 +71,7 @@ void	sort_three(t_list **stack_a)
 	t_list	*current;
 
 	current = *stack_a;
-    ft_normalisation(*stack_a);
+	normalisation(*stack_a);
 	if (current->rank == 1 && current->next->rank == 0)
 		swap_nodes(stack_a, 'a');
 	else if (current->rank == 2 && current->next->rank == 1)
@@ -90,30 +90,29 @@ void	sort_three(t_list **stack_a)
 		reverse_rotate(stack_a, 'a');
 }
 
-void    sort_five(t_list **stack_a, t_list **stack_b)
+void	sort_five(t_list **stack_a, t_list **stack_b)
 {
-    int i;
+	int	i;
 
-    i = 5;
-    if (is_sorted_or_not(*stack_a))
-        return ;
-    while (i > 3)
-    {
-        if ((*stack_a)->rank == 0 || (*stack_a)->rank == 1)
-        {
-            push(stack_b, stack_a, 'b');
-            i--;
-        }
-        else
-           rotate(stack_a, 'a');
-    }
-    sort_three(stack_a);
-    if (*stack_b && (*stack_b)->next
-        && (*stack_b)->rank < (*stack_b)->next->rank)
-    {
-        swap_nodes(stack_b, 'b');
-    }
-    push(stack_a, stack_b, 'a');
-    push(stack_a, stack_b, 'a');
+	i = 5;
+	if (is_sorted_or_not(*stack_a))
+		return ;
+	while (i > 3)
+	{
+		if ((*stack_a)->rank == 0 || (*stack_a)->rank == 1)
+		{
+			push(stack_b, stack_a, 'b');
+			i--;
+		}
+		else
+			rotate(stack_a, 'a');
+	}
+	sort_three(stack_a);
+	if (*stack_b && (*stack_b)->next
+		&& (*stack_b)->rank < (*stack_b)->next->rank)
+	{
+		swap_nodes(stack_b, 'b');
+	}
+	push(stack_a, stack_b, 'a');
+	push(stack_a, stack_b, 'a');
 }
-
