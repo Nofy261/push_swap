@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 13:45:39 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/16 17:17:07 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/17 13:04:40 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 
 t_list *find_min(t_list *stack_a)
 {
-    t_list *min = stack_a; //les deux pointent vers un meme maillon
+    t_list *min = stack_a; //les deux pointent vers un meme maillon NORMINETTE
 
     while (min->next && min->rank != -1)
         min = min->next;
@@ -42,17 +42,15 @@ void    set_rank(t_list **stack_a)
     }
 }
 
-// a etudier !important
-
-static void	ft_normalisation(t_list *a)
+void	ft_normalisation(t_list *stack_a)
 {
 	t_list	*save;
 	t_list	*current;
 	int		count;
 
 	count = 0;
-	save = a;
-	current = a;
+	save = stack_a;
+	current = stack_a;
 	while (save)
 	{
 		count = 0;
@@ -64,7 +62,7 @@ static void	ft_normalisation(t_list *a)
 		}
 		save->rank = count;
 		save = save->next;
-		current = a;
+		current = stack_a;
 	}
 }
 
@@ -101,7 +99,7 @@ void    sort_five(t_list **stack_a, t_list **stack_b)
         return ;
     while (i > 3)
     {
-        if ((*stack_a)->rank == 0 || (*stack_a)->rank == 1)//on met dans b les 2 plus petits
+        if ((*stack_a)->rank == 0 || (*stack_a)->rank == 1)
         {
             push(stack_b, stack_a, 'b');
             i--;
@@ -111,7 +109,7 @@ void    sort_five(t_list **stack_a, t_list **stack_b)
     }
     sort_three(stack_a);
     if (*stack_b && (*stack_b)->next
-        && (*stack_b)->rank < (*stack_b)->next->rank)//le plus petit doit etre place en 2eme dans b sinon on swao avant d'envoyer
+        && (*stack_b)->rank < (*stack_b)->next->rank)
     {
         swap_nodes(stack_b, 'b');
     }

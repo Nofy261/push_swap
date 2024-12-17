@@ -6,13 +6,11 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 13:51:04 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/16 16:52:51 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/17 13:01:43 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-//#include <stdio.h> // A enlever avant push
 
 int	is_sorted_or_not(t_list *stack_a)
 {
@@ -33,12 +31,9 @@ void	sort_two(t_list **stack_a)
 	if (i == 2)
 		swap_nodes(stack_a, 'a');
 }
- #include <stdio.h>
- 
 
 void radix_sort(t_list **stack_a, t_list **stack_b)
 {
-
     int            len;
     int			i;
 

@@ -6,13 +6,13 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:13:13 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/04 15:47:00 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/17 12:37:46 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	reverse_rotate(t_list **stack, char x) //a revoir comprehension
+void	reverse_rotate(t_list **stack, char x)
 {
 	t_list *last;
 	t_list *second_last;
@@ -36,6 +36,7 @@ void	reverse_rotate(t_list **stack, char x) //a revoir comprehension
 	else if (x == 'b')
 		write(1, "rrb\n", 4);
 }
+
 
 void   reverse_rotate_only(t_list **stack)
 {

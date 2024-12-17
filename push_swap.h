@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:12:35 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/16 16:54:08 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/17 09:58:59 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -79,6 +79,6 @@ int	is_sorted_or_not(t_list *stack_a);
 void	sort_two(t_list **stack_a);
 void    radix_sort(t_list **stack_a, t_list **stack_b);
 
-
+void	ft_normalisation(t_list *stack_a);
 
 #endif

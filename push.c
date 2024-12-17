@@ -6,14 +6,11 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:12:44 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/16 16:54:04 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/17 12:35:53 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-#include <stdio.h>
-
 
 void	push(t_list **stack_dst, t_list **stack_src, char c)
 {

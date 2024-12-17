@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   parsing.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: teddybandama <teddybandama@student.42.f    +#+  +:+       +#+        */
+/*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 09:21:12 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/15 19:19:52 by teddybandam      ###   ########.fr       */
+/*   Updated: 2024/12/17 12:32:24 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ int verif_argc(int argc) //s'il y a juste un argument
 }
 
 
-int	check_sign(char **argv) // on regarde si apres le - ou + c'est bien un chiffre 
+int	check_sign(char **argv)
 {
 	int	i;
 	int	j;
@@ -38,7 +38,7 @@ int	check_sign(char **argv) // on regarde si apres le - ou + c'est bien un chiff
 			}
 			if (argv[j][0] == 32 && (argv[j][1] == 32 || argv[j][1] == '\0'))
 				return (1);
-			i++;//on va checker les autres chiffres/caractere?
+			i++;
 		}
 		if (i == 0)
 			return (1);
@@ -58,13 +58,13 @@ void	parse_arguments(t_list **stack_a, char **big_argv)// on met les nodes qui s
 	{
 		value = ft_atoi(big_argv[j]);
 		newnode = ft_lstnew(value);
-		ft_lstadd_back(stack_a, newnode);//pourquoi rajouter a la fin et non au debut??
+		ft_lstadd_back(stack_a, newnode);
 		j++; 
 	}
 }
 
 
-int	check_double(t_list **stack_a) //test ok
+int	check_double(t_list **stack_a)
 {
 	t_list *node = *stack_a;// ecriture valable ou d'abord initialiser et ensuite donner la valeur?? Il ne faut pas enlever * devant stack_a????
 	while (node)

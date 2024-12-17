@@ -6,29 +6,13 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:13:24 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/16 14:22:18 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/17 12:44:16 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 
 #include "push_swap.h"
 
-// void	rotate(t_list **stack, char x)
-// {
-// 	t_list	*tmp;
-
-// 	if (ft_lstsize(*stack) <= 1)
-// 		return ;
-// 	tmp = (*stack)->next;
-// 	ft_lstlast(*stack)->next = (*stack);
-// 	(*stack)->next = NULL;
-// 	(*stack) = tmp;
-// 	if (x == 'a')
-// 		write (1, "ra\n", 3);
-// 	else if (x == 'b')
-// 		write (1, "rb\n", 3);
-// }
-#include <stdio.h>
 void	rotate(t_list **stack, char x)
 {
 	t_list	*tmp;
@@ -50,19 +34,6 @@ void	rotate(t_list **stack, char x)
 	else if (x == 'b')
 		write (1, "rb\n", 3);
 }
-
-
-// void	rotate_only(t_list **stack)
-// {
-// 	t_list	*tmp;
-
-// 	if (ft_lstsize(*stack) <= 1)
-// 		return ;
-// 	tmp = (*stack)->next;
-// 	ft_lstlast(*stack)->next = (*stack);
-// 	(*stack)->next = NULL;
-// 	(*stack) = tmp;
-// }
 
 void	rotate_only(t_list **stack)
 {
