@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:35:20 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/17 19:23:08 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:08:39 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,7 @@ int	main(int argc, char **argv)
 		parse_arguments(&stack_a, cut_argv);
 	}
 	check_double(stack_a, cut_argv);
-	set_rank(&stack_a);
+	normalisation(stack_a);
 	check_sort(&stack_a, &stack_b);
 	free_end(&stack_a, &stack_b, cut_argv);
 }

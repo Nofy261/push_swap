@@ -6,41 +6,11 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 13:45:39 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/17 14:32:34 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:08:22 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-t_list	*find_min(t_list *stack_a)
-{
-	t_list	*min;
-
-	min = stack_a;
-	while (min->next && min->rank != -1)
-		min = min->next;
-	while (stack_a)
-	{
-		if (stack_a->value < min->value && stack_a->rank == -1)
-			min = stack_a;
-		stack_a = stack_a->next;
-	}
-	return (min);
-}
-
-void	set_rank(t_list **stack_a)
-{
-	int	count;
-	int	len;
-
-	count = 0;
-	len = ft_lstsize(*stack_a);
-	while (count < len)
-	{
-		find_min(*stack_a)->rank = count;
-		count++;
-	}
-}
 
 void	normalisation(t_list *stack_a)
 {

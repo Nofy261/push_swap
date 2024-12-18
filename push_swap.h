@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:12:35 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/17 19:24:02 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/18 11:09:01 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,6 @@ int		check_sign(char **argv);
 void	parse_arguments(t_list **stack_a, char **big_argv);
 int		check_double(t_list *stack_a, char **cut_argv);
 
-void	set_rank(t_list **stack_a);
 void	sort_three(t_list **stack_a);
 void	sort_five(t_list **stack_a, t_list **stack_b);
 
