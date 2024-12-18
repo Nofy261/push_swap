@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/14 13:51:04 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/17 19:23:47 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/18 16:43:16 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,9 @@
 
 void	check_sort(t_list **stack_a, t_list **stack_b)
 {
-	if (!is_sorted_or_not(*stack_a))
+	if (is_sorted_or_not(*stack_a) == 1)
+		return ;
+	else
 	{
 		if (ft_lstsize(*stack_a) == 2)
 			sort_two(stack_a);

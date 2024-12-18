@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:12:35 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/18 11:09:01 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/18 16:53:31 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,7 +31,7 @@ t_list	*ft_lstnew(int value);
 
 int		ft_atoi(char *str, t_list **stack_a, char **cut_argv);
 char	**ft_split(char const *s, char c);
-void	ft_putstr_fd(char	*s, int fd);
+void	ft_putstr_fd_exit(char	*s, int fd);
 int		ft_isdigit(int c);
 
 void	push(t_list **stack_dst, t_list **stack_src, char c);
@@ -50,12 +50,13 @@ void	reverse_rotate_a_and_b(t_list **stack_a, t_list **stack_b);
 
 int		check_sign(char **argv);
 void	parse_arguments(t_list **stack_a, char **big_argv);
-int		check_double(t_list *stack_a, char **cut_argv);
+int		check_double(t_list *stack_a);
 
 void	sort_three(t_list **stack_a);
 void	sort_five(t_list **stack_a, t_list **stack_b);
 
 void	check_sort(t_list **stack_a, t_list **stack_b);
+
 int		is_sorted_or_not(t_list *stack_a);
 void	sort_two(t_list **stack_a);
 void	radix_sort(t_list **stack_a, t_list **stack_b);
@@ -65,6 +66,6 @@ void	print_error(char **cut_argv, t_list **stack_a);
 
 void	*free_all(char **str);
 void	free_list(t_list *stack_a);
-void	free_end(t_list **stack_a, t_list **stack_b, char **cut_argv);
+void	free_end(t_list **stack_a, t_list **stack_b);
 
 #endif

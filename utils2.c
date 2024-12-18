@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 09:10:03 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/17 18:07:32 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/18 19:02:32 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,22 @@ void	print_error(char **cut_argv, t_list **stack_a)
 	free_list(*stack_a);
 	exit(EXIT_FAILURE);
 }
+
+// static void    calcul_int(const char *nptr, t_list **stack_a, char **tab, int i)
+// {
+//     int    countnumber;
+
+//     countnumber = 0;
+//     while (nptr[i] == '0')
+//         i++;
+//     while (nptr[i])
+//     {
+//         i++;
+//         countnumber++;
+//     }
+//     if (countnumber > 10)
+//         free_all(tab, *stack_a, 1);
+// }
 
 int	ft_atoi(char *str, t_list **stack_a, char **cut_argv)
 {
@@ -42,6 +58,7 @@ int	ft_atoi(char *str, t_list **stack_a, char **cut_argv)
 	while (str[i] >= '0' && str[i] <= '9')
 		stock = stock * 10 + (str[i++] - '0');
 	stock *= sign;
+	//calcul_int();
 	if (!(stock > -2147483649 && stock < 2147483648) || str[i] != '\0')
 		print_error(cut_argv, stack_a);
 	return (stock);
@@ -54,7 +71,7 @@ int	ft_isdigit(int c)
 	return (0);
 }
 
-void	ft_putstr_fd(char	*s, int fd)
+void	ft_putstr_fd_exit(char	*s, int fd)
 {
 	int	i;
 
@@ -66,4 +83,5 @@ void	ft_putstr_fd(char	*s, int fd)
 		write (fd, &s[i], 1);
 		i++;
 	}
+	exit(1);
 }
