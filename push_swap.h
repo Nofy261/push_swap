@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:12:35 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/18 16:53:31 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/19 10:26:49 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,8 @@ int		ft_lstsize(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 t_list	*ft_lstnew(int value);
 
-int		ft_atoi(char *str, t_list **stack_a, char **cut_argv);
+long	parse_number(char *str, int *i, t_list **stack_a, char **cut_argv);
+int		ft_parse_long(char *str, t_list **stack_a, char **cut_argv);
 char	**ft_split(char const *s, char c);
 void	ft_putstr_fd_exit(char	*s, int fd);
 int		ft_isdigit(int c);
@@ -67,5 +68,6 @@ void	print_error(char **cut_argv, t_list **stack_a);
 void	*free_all(char **str);
 void	free_list(t_list *stack_a);
 void	free_end(t_list **stack_a, t_list **stack_b);
+void	print_error(char **cut_argv, t_list **stack_a);
 
 #endif

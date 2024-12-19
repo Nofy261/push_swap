@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 09:21:12 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/18 17:38:16 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/19 10:26:36 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,43 +38,28 @@ int	check_sign(char **argv)
 	}
 	return (0);
 }
-void    parse_arguments(t_list **stack_a, char **big_argv)
+
+void	parse_arguments(t_list **stack_a, char **big_argv)
 {
-    t_list    *newnode;
-    int        j;
-    int        value;
+	t_list		*newnode;
+	int			j;
+	int			value;
 
-    j = 0;
-    while (big_argv[j])
-    {
-        value = ft_atoi(big_argv[j], stack_a, big_argv);
-        newnode = ft_lstnew(value);
-        if (!newnode)
-        {
-            free_all(big_argv);
-            free_list(*stack_a);
-            exit(EXIT_FAILURE);
-        }
-        ft_lstadd_back(stack_a, newnode);
-        j++;
-    }
+	j = 0;
+	while (big_argv[j])
+	{
+		value = ft_parse_long(big_argv[j], stack_a, big_argv);
+		newnode = ft_lstnew(value);
+		if (!newnode)
+		{
+			free_all(big_argv);
+			free_list(*stack_a);
+			exit(EXIT_FAILURE);
+		}
+		ft_lstadd_back(stack_a, newnode);
+		j++;
+	}
 }
-
-// void	parse_arguments(t_list **stack_a, char **big_argv)
-// {
-// 	t_list	*newnode;
-// 	int		j;
-// 	int		value;
-
-// 	j = 0;
-// 	while (big_argv[j])
-// 	{
-// 		value = ft_atoi(big_argv[j], stack_a, big_argv);
-// 		newnode = ft_lstnew(value);
-// 		ft_lstadd_back(stack_a, newnode);
-// 		j++;
-// 	}
-// }
 
 int	check_double(t_list *stack_a)
 {
