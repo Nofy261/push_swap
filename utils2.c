@@ -6,18 +6,21 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/06 09:10:03 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/19 11:20:37 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/19 13:36:43 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-long	parse_number(char *str, int *i, t_list **stack_a, char **cut_argv)
+static long	parse_number(char *str, int *i, t_list **stack_a, char **cut_argv)
 {
 	long	stock;
 	int		countnumber;
+
 	stock = 0;
 	countnumber = 0;
+	while (str[*i] == '0')
+		(*i)++;
 	while (str[*i] >= '0' && str[*i] <= '9')
 	{
 		countnumber++;
@@ -60,19 +63,4 @@ int	ft_isdigit(int c)
 	if (c >= '0' && c <= '9')
 		return (1);
 	return (0);
-}
-
-void	ft_putstr_fd_exit(char	*s, int fd)
-{
-	int	i;
-
-	i = 0;
-	if (!s)
-		return ;
-	while (s[i] != '\0')
-	{
-		write (fd, &s[i], 1);
-		i++;
-	}
-	exit(1);
 }

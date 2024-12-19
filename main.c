@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/04 15:35:20 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/18 16:53:48 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/19 13:35:15 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,10 +26,10 @@ int	main(int argc, char **argv)
 	if (argc == 1)
 		return (1);
 	if (check_sign(argv) == 1)
-		ft_putstr_fd_exit("Error\n", 2);
+		print_error(NULL, NULL);
 	while (i < argc)
 	{
-		cut_argv = ft_split(argv[i], ' ');
+		cut_argv = ft_split_and_free(argv[i], ' ', &stack_a);
 		parse_arguments(&stack_a, cut_argv);
 		free_all(cut_argv);
 		i++;

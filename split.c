@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/17 13:05:28 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/18 14:40:16 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/19 13:37:12 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,7 @@ static void	set_mem(char **result, char const *str, char sep)
 	result[i] = 0;
 }
 
-char	**ft_split(char const *s, char c)
+char	**ft_split_and_free(char const *s, char c, t_list **stack_a)
 {
 	size_t	words;
 	char	**result;
@@ -103,7 +103,11 @@ char	**ft_split(char const *s, char c)
 	words = count_words(s, c);
 	result = malloc(sizeof(char *) * (words + 1));
 	if (!result)
-		return (NULL);
+	{
+		write(2, "Memory allocation failed\n", 26);
+		free_list(*stack_a);
+		exit(EXIT_FAILURE);
+	}
 	set_mem(result, s, c);
 	return (result);
 }

@@ -6,7 +6,7 @@
 /*   By: nolecler <nolecler@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/30 08:12:35 by nolecler          #+#    #+#             */
-/*   Updated: 2024/12/19 10:26:49 by nolecler         ###   ########.fr       */
+/*   Updated: 2024/12/19 13:36:56 by nolecler         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,24 +29,19 @@ int		ft_lstsize(t_list *lst);
 void	ft_lstadd_back(t_list **lst, t_list *new);
 t_list	*ft_lstnew(int value);
 
-long	parse_number(char *str, int *i, t_list **stack_a, char **cut_argv);
 int		ft_parse_long(char *str, t_list **stack_a, char **cut_argv);
-char	**ft_split(char const *s, char c);
-void	ft_putstr_fd_exit(char	*s, int fd);
+char	**ft_split_and_free(char const *s, char c, t_list **stack_a);
 int		ft_isdigit(int c);
 
 void	push(t_list **stack_dst, t_list **stack_src, char c);
 
 void	swap_nodes(t_list **stack, char x);
-void	swap_nodes_only(t_list **stack);
 void	swap_a_and_b(t_list **stack_a, t_list **stack_b);
 
 void	rotate(t_list **stack, char x);
-void	rotate_only(t_list **stack);
 void	rotate_a_and_b(t_list **stack_a, t_list **stack_b);
 
 void	reverse_rotate(t_list **stack, char x);
-void	reverse_rotate_only(t_list **stack);
 void	reverse_rotate_a_and_b(t_list **stack_a, t_list **stack_b);
 
 int		check_sign(char **argv);
@@ -68,6 +63,5 @@ void	print_error(char **cut_argv, t_list **stack_a);
 void	*free_all(char **str);
 void	free_list(t_list *stack_a);
 void	free_end(t_list **stack_a, t_list **stack_b);
-void	print_error(char **cut_argv, t_list **stack_a);
 
 #endif
